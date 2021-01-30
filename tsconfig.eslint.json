@@ -1,0 +1,7 @@
+// TypeScript compile settings
+// https://github.com/typescript-eslint/typescript-eslint/issues/890
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
