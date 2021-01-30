@@ -1,0 +1,8 @@
+{
+  // Run 'eslint --fix' on file save to excute auto-formatting
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "eslint.packageManager": "yarn"
+}
