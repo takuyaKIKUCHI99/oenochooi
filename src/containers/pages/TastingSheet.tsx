@@ -33,6 +33,17 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
     if (title === '総合評価') setConclusion(attributes);
   };
 
+  const handleSubmit = () => {
+    const tastingSheet = {
+      wineType,
+      appearance: { ...appearance },
+      nose: { ...nose },
+      palate: { ...palate },
+      conclusion: { ...conclusion },
+    };
+    console.log(tastingSheet);
+  };
+
   return (
     <TastingSheet
       appearance={appearance}
@@ -41,6 +52,7 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       palate={palate}
       wineType={wineType}
       handleCategoryChange={handleCategoryChange}
+      handleSubmit={handleSubmit}
     />
   );
 };
