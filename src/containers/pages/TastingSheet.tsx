@@ -8,6 +8,7 @@ import {
   palateDefault,
   CategoryItems,
 } from 'data/tastingCategories';
+import { db } from '../../firebase';
 
 type Props = {
   wineType: WineType;
@@ -41,7 +42,11 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       palate: { ...palate },
       conclusion: { ...conclusion },
     };
-    console.log(tastingSheet);
+    db.collection('tastingSheets')
+      .add({ tastingSheet })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
   };
 
   return (
