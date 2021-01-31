@@ -53,6 +53,8 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
         setLoading(false);
       })
       .catch((error) => {
+        // Todo: Replace console when Message is ready
+        // eslint-disable-next-line no-console
         console.error('Error adding document: ', error);
         setLoading(false);
       });
