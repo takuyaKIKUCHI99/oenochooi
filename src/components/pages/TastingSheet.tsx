@@ -11,6 +11,7 @@ type Props = {
   nose: CategoryItems;
   palate: CategoryItems;
   wineType: WineType;
+  loading: boolean;
   handleCategoryChange: (attributes: CategoryItems, title: Categories) => void;
   handleSubmit: () => void;
 };
@@ -21,6 +22,7 @@ const TastingSheet: FC<Props> = ({
   nose,
   palate,
   wineType,
+  loading,
   handleCategoryChange,
   handleSubmit,
 }) => (
@@ -51,9 +53,9 @@ const TastingSheet: FC<Props> = ({
       />
       <Grid centered>
         <Button
-          color="purple"
-          size="huge"
-          loading={false}
+          basic
+          disabled={loading}
+          loading={loading}
           onClick={handleSubmit}
         >
           保存

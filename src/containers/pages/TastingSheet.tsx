@@ -24,6 +24,8 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
     conclusionDefault,
   );
 
+  const [loading, setLoading] = useState(false);
+
   const handleCategoryChange = (
     attributes: CategoryItems,
     title: Categories,
@@ -42,10 +44,17 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       palate: { ...palate },
       conclusion: { ...conclusion },
     };
+
+    setLoading(true);
+
     db.collection('tastingSheets')
       .add({ tastingSheet })
+      .then(() => {
+        setLoading(false);
+      })
       .catch((error) => {
         console.error('Error adding document: ', error);
+        setLoading(false);
       });
   };
 
@@ -56,6 +65,7 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       nose={nose}
       palate={palate}
       wineType={wineType}
+      loading={loading}
       handleCategoryChange={handleCategoryChange}
       handleSubmit={handleSubmit}
     />
