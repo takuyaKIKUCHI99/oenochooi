@@ -8,5 +8,22 @@
     "source.fixAll.stylelint": true
   },
   "editor.formatOnSave": false,
-  "eslint.packageManager": "yarn"
+  "eslint.packageManager": "yarn",
+  "cSpell.userWords": [
+    "Balley",
+    "Malbec",
+    "Nebbiolo",
+    "Syrah",
+    "TTFB",
+    "Tempranillo",
+    "firestore"
+  ],
+  "cSpell.words": [
+    "appspot",
+    "browserslist",
+    "firebaseapp",
+    "oenochooi",
+    "stylelint",
+    "typesync"
+  ],
 }

@@ -8,6 +8,7 @@ import {
   palateDefault,
   CategoryItems,
 } from 'data/tastingCategories';
+import { db } from '../../firebase';
 
 type Props = {
   wineType: WineType;
@@ -23,6 +24,8 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
     conclusionDefault,
   );
 
+  const [loading, setLoading] = useState(false);
+
   const handleCategoryChange = (
     attributes: CategoryItems,
     title: Categories,
@@ -33,6 +36,30 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
     if (title === '総合評価') setConclusion(attributes);
   };
 
+  const handleSubmit = () => {
+    const tastingSheet = {
+      wineType,
+      appearance: { ...appearance },
+      nose: { ...nose },
+      palate: { ...palate },
+      conclusion: { ...conclusion },
+    };
+
+    setLoading(true);
+
+    db.collection('tastingSheets')
+      .add({ tastingSheet })
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        // Todo: Replace console when Message is ready
+        // eslint-disable-next-line no-console
+        console.error('Error adding document: ', error);
+        setLoading(false);
+      });
+  };
+
   return (
     <TastingSheet
       appearance={appearance}
@@ -40,7 +67,9 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       nose={nose}
       palate={palate}
       wineType={wineType}
+      loading={loading}
       handleCategoryChange={handleCategoryChange}
+      handleSubmit={handleSubmit}
     />
   );
 };
