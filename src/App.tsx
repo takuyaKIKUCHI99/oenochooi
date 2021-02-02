@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Container } from 'semantic-ui-react';
 
-import List from 'containers/pages/List';
+import List from 'components/pages/List';
 import TastingSheet from 'containers/pages/TastingSheet';
 
 const App: FC = () => {
