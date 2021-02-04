@@ -8,6 +8,7 @@
   - Husky
   - lint-staged
 - Semantic UI React
+- React Router
 - Firestore
 
 # Folder architecture
