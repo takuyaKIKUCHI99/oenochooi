@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Container } from 'semantic-ui-react';
 
-import List from 'components/pages/List';
+import List from 'containers/pages/List';
 import TastingSheet from 'containers/pages/TastingSheet';
 
 const App: FC = () => {
@@ -11,12 +11,14 @@ const App: FC = () => {
     <Router>
       <div className="App">
         <Container style={{ padding: '1rem 0' }}>
-          <Route path="/tasting-sheet">
-            <TastingSheet wineType="red" />
-          </Route>
-          <Route path="/">
-            <List />
-          </Route>
+          <Switch>
+            <Route path="/tasting-sheet">
+              <TastingSheet wineType="red" />
+            </Route>
+            <Route path="/">
+              <List />
+            </Route>
+          </Switch>
         </Container>
       </div>
     </Router>
