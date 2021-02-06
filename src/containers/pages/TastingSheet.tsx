@@ -8,7 +8,7 @@ import {
   palateDefault,
   CategoryItems,
 } from 'data/tastingCategories';
-import { db } from '../../firebase';
+import firebase, { db } from '../../firebase';
 
 type Props = {
   wineType: WineType;
@@ -43,6 +43,7 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       nose: { ...nose },
       palate: { ...palate },
       conclusion: { ...conclusion },
+      createdAt: firebase.firestore.Timestamp.now(),
     };
 
     setLoading(true);
