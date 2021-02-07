@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
-import { Card, Header } from 'semantic-ui-react';
+import { List, Header } from 'semantic-ui-react';
 import ListItem, { TastingSheetsDoc } from 'components/organisms/ListItem';
 
 type Props = {
   tastingSheets: TastingSheetsDoc[] | undefined;
 };
 
-const List: FC<Props> = ({ tastingSheets }) => (
+const TastingList: FC<Props> = ({ tastingSheets }) => (
   <>
     <Header as="h1" textAlign="center">
       テイスティングリスト
     </Header>
-    <Card.Group>
+    <List selection verticalAlign="middle">
       <ListItem tastingSheets={tastingSheets} />
-    </Card.Group>
+    </List>
   </>
 );
 
-export default List;
+export default TastingList;

@@ -1,15 +1,8 @@
 import React, { FC } from 'react';
-import { Card } from 'semantic-ui-react';
-import WineTypeDot from 'components/molecules/WineTypeDot';
+import { List } from 'semantic-ui-react';
 import { CategoryItems, WineType } from 'data/tastingCategories';
 import firebase from 'firebase';
 import dateFormatter from 'utils/dateFormatter';
-
-const style = {
-  flexDirection: 'row',
-  alignItems: 'center',
-  height: '3rem',
-};
 
 export type Categories = {
   [key: string]: CategoryItems;
@@ -36,10 +29,15 @@ type Props = {
 const ListItem: FC<Props> = ({ tastingSheets }) => (
   <>
     {tastingSheets?.map((doc) => (
-      <Card fluid style={style} key={doc.id}>
-        <WineTypeDot wineType={doc.tastingSheet.wineType} />
-        <p>{dateFormatter(doc.tastingSheet.createdAt.toDate())}</p>
-      </Card>
+      <List.Item key={doc.id}>
+        <List.Icon
+          name="circle"
+          color={doc.tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
+        />
+        <List.Content>
+          {dateFormatter(doc.tastingSheet.createdAt.toDate())}
+        </List.Content>
+      </List.Item>
     ))}
   </>
 );

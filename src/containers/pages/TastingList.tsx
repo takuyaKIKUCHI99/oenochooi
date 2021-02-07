@@ -1,9 +1,9 @@
 import React, { useState, useEffect, FC } from 'react';
-import List from 'components/pages/List';
+import List from 'components/pages/TastingList';
 import { TastingSheetsDoc, Categories } from 'components/organisms/ListItem';
 import { db } from '../../firebase';
 
-const EnhancedList: FC = () => {
+const EnhancedTastingList: FC = () => {
   const [tastingSheets, setTastingSheets] = useState<TastingSheetsDoc[]>();
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const EnhancedList: FC = () => {
   return <List tastingSheets={tastingSheets} />;
 };
 
-export default EnhancedList;
+export default EnhancedTastingList;
