@@ -8,16 +8,20 @@ type Props = {
 
 const TastingList: FC<Props> = ({ tastingSheets }) => (
   <>
-    <Header as="h1" textAlign="center">
-      テイスティングリスト
-    </Header>
-    {tastingSheets?.length ? (
-      <List selection verticalAlign="middle">
-        <ListItem tastingSheets={tastingSheets} />
-      </List>
-    ) : (
-      <p>まだテイスティングアイテムがありません</p>
-    )}
+    <header>
+      <Header as="h1" textAlign="center">
+        テイスティングリスト
+      </Header>
+    </header>
+    <main>
+      {tastingSheets?.length ? (
+        <List selection verticalAlign="middle">
+          <ListItem tastingSheets={tastingSheets} />
+        </List>
+      ) : (
+        <p>まだテイスティングアイテムがありません</p>
+      )}
+    </main>
   </>
 );
 
