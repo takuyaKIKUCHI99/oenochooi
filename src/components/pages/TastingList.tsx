@@ -11,9 +11,13 @@ const TastingList: FC<Props> = ({ tastingSheets }) => (
     <Header as="h1" textAlign="center">
       テイスティングリスト
     </Header>
-    <List selection verticalAlign="middle">
-      <ListItem tastingSheets={tastingSheets} />
-    </List>
+    {tastingSheets?.length ? (
+      <List selection verticalAlign="middle">
+        <ListItem tastingSheets={tastingSheets} />
+      </List>
+    ) : (
+      <p>まだテイスティングアイテムがありません</p>
+    )}
   </>
 );
 

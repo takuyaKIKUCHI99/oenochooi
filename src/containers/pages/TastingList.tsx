@@ -10,14 +10,17 @@ const EnhancedTastingList: FC = () => {
     db.collection('tastingSheets')
       .get()
       .then((querySnapshot) => {
-        const docs = querySnapshot.docs.map<TastingSheetsDoc>(
+        const { docs } = querySnapshot;
+        if (!docs) return;
+
+        const tastingSheetDocs = docs.map<TastingSheetsDoc>(
           (doc): TastingSheetsDoc => {
             const tastingSheet: Categories = doc.data();
 
             return { id: doc.id, ...tastingSheet } as TastingSheetsDoc;
           },
         );
-        setTastingSheets(docs);
+        setTastingSheets(tastingSheetDocs);
       })
       .catch(() => {
         console.log('error occured');
