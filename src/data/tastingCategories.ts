@@ -1,3 +1,5 @@
+export type WineType = 'red' | 'white';
+
 export type Items = {
   [key: string]: boolean;
 };

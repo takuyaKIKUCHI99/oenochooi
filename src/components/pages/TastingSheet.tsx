@@ -2,9 +2,8 @@ import React, { FC } from 'react';
 import { Button, Form, Grid, Header } from 'semantic-ui-react';
 import { Categories } from 'components/organisms/TastingCategory';
 import TastingCategory from 'containers/organisms/TastingCategory';
-import { CategoryItems } from 'data/tastingCategories';
+import { CategoryItems, WineType } from 'data/tastingCategories';
 
-export type WineType = 'red' | 'white';
 type Props = {
   appearance: CategoryItems;
   conclusion: CategoryItems;

@@ -1,12 +1,13 @@
 import React, { FC, useState } from 'react';
 import { Categories } from 'components/organisms/TastingCategory';
-import TastingSheet, { WineType } from 'components/pages/TastingSheet';
+import TastingSheet from 'components/pages/TastingSheet';
 import {
   appearanceDefault,
   conclusionDefault,
   nodeDefault,
   palateDefault,
   CategoryItems,
+  WineType,
 } from 'data/tastingCategories';
 import firebase, { db } from '../../firebase';
 
