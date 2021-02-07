@@ -1,27 +1,30 @@
-import React, { useEffect, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import List from 'components/pages/List';
+import { TastingSheetsDoc, Categories } from 'components/organisms/ListItem';
 import { db } from '../../firebase';
 
 const EnhancedList: FC = () => {
-  // const [tastingSheet, setTastingSheet] = useState();
+  const [tastingSheets, setTastingSheets] = useState<TastingSheetsDoc[]>();
 
   useEffect(() => {
     db.collection('tastingSheets')
       .get()
       .then((querySnapshot) => {
-        const tastingSheets = querySnapshot.docs.map((doc) => {
-          const tastingSheet = doc.data();
+        const docs = querySnapshot.docs.map<TastingSheetsDoc>(
+          (doc): TastingSheetsDoc => {
+            const tastingSheet: Categories = doc.data();
 
-          return { id: doc.id, ...tastingSheet };
-        });
-        console.log(tastingSheets);
+            return { id: doc.id, ...tastingSheet } as TastingSheetsDoc;
+          },
+        );
+        setTastingSheets(docs);
       })
       .catch(() => {
         console.log('error occured');
       });
   }, []);
 
-  return <List />;
+  return <List tastingSheets={tastingSheets} />;
 };
 
 export default EnhancedList;

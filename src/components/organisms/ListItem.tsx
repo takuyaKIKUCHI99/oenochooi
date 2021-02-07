@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Card } from 'semantic-ui-react';
 import WineTypeDot from 'components/molecules/WineTypeDot';
+import { CategoryItems } from 'data/tastingCategories';
 
 const style = {
   flexDirection: 'row',
@@ -8,24 +9,27 @@ const style = {
   height: '3rem',
 };
 
-const ListItem: FC = () => (
+export type Categories = {
+  [key: string]: CategoryItems;
+};
+
+export type TastingSheetsDoc = {
+  id: string;
+  tastingSheet: Categories;
+};
+
+type Props = {
+  tastingSheets: TastingSheetsDoc[] | undefined;
+};
+
+const ListItem: FC<Props> = ({ tastingSheets }) => (
   <>
-    <Card fluid style={style}>
-      <WineTypeDot />
-      <p>2012/02/02 9:35</p>
-    </Card>
-    <Card fluid>
-      <p>2012/02/02 9:35</p>
-    </Card>
-    <Card fluid>
-      <p>2012/02/02 9:35</p>
-    </Card>
-    <Card fluid>
-      <p>2012/02/02 9:35</p>
-    </Card>
-    <Card fluid>
-      <p>2012/02/02 9:35</p>
-    </Card>
+    {tastingSheets?.map((_) => (
+      <Card fluid style={style}>
+        <WineTypeDot />
+        <p>2012/02/02 9:35</p>
+      </Card>
+    ))}
   </>
 );
 
