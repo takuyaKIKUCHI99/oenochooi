@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Card } from 'semantic-ui-react';
 import WineTypeDot from 'components/molecules/WineTypeDot';
-import { CategoryItems } from 'data/tastingCategories';
+import { CategoryItems, WineType } from 'data/tastingCategories';
+import firebase from 'firebase';
 
 const style = {
   flexDirection: 'row',
@@ -13,9 +14,18 @@ export type Categories = {
   [key: string]: CategoryItems;
 };
 
+type TastingSheetDoc = {
+  wineType: WineType;
+  appearance: CategoryItems;
+  nose: CategoryItems;
+  palate: CategoryItems;
+  conclusion: CategoryItems;
+  createdAt: firebase.firestore.Timestamp;
+};
+
 export type TastingSheetsDoc = {
   id: string;
-  tastingSheet: Categories;
+  tastingSheet: TastingSheetDoc;
 };
 
 type Props = {
@@ -24,10 +34,10 @@ type Props = {
 
 const ListItem: FC<Props> = ({ tastingSheets }) => (
   <>
-    {tastingSheets?.map((_) => (
-      <Card fluid style={style}>
-        <WineTypeDot />
-        <p>2012/02/02 9:35</p>
+    {tastingSheets?.map((doc) => (
+      <Card fluid style={style} key={doc.id}>
+        <WineTypeDot wineType={doc.tastingSheet.wineType} />
+        <p>{doc.tastingSheet.createdAt.toDate().toString()}</p>
       </Card>
     ))}
   </>
