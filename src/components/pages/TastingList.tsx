@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { List, Header } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import ListItem, { TastingSheetsDoc } from 'components/organisms/ListItem';
+import TastingListHeader from 'components/organisms/TastingListHeader';
 
 type Props = {
   tastingSheets: TastingSheetsDoc[] | undefined;
@@ -9,9 +10,7 @@ type Props = {
 const TastingList: FC<Props> = ({ tastingSheets }) => (
   <>
     <header>
-      <Header as="h1" textAlign="center">
-        テイスティングリスト
-      </Header>
+      <TastingListHeader />
     </header>
     <main>
       {tastingSheets?.length ? (
