@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import { Dropdown, Header } from 'semantic-ui-react';
 
-const TastingListHeader: FC = () => (
+type Props = {
+  handleClick: () => void;
+};
+
+const TastingListHeader: FC<Props> = ({ handleClick }) => (
   <>
     <Header as="h1" textAlign="center">
       テイスティングリスト
@@ -15,6 +19,7 @@ const TastingListHeader: FC = () => (
           <Dropdown.Item
             text="赤ワイン"
             label={{ color: 'purple', empty: true, circular: true }}
+            onClick={handleClick}
           />
           <Dropdown.Item
             text="白ワイン"
