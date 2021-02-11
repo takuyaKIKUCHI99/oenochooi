@@ -7,9 +7,6 @@ type Props = {
 
 const TastingListHeader: FC<Props> = ({ handleClick }) => (
   <>
-    <Header as="h1" textAlign="center">
-      テイスティングリスト
-    </Header>
     <div
       className="action-menu"
       style={{ display: 'flex', justifyContent: 'flex-end' }}
@@ -28,6 +25,9 @@ const TastingListHeader: FC<Props> = ({ handleClick }) => (
         </Dropdown.Menu>
       </Dropdown>
     </div>
+    <Header as="h1" textAlign="center">
+      テイスティングリスト
+    </Header>
   </>
 );
 
