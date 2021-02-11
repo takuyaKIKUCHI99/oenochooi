@@ -11,11 +11,8 @@ import {
 } from 'data/tastingCategories';
 import firebase, { db } from '../../firebase';
 
-type Props = {
-  wineType: WineType;
-};
-
-const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
+const EnhancedTastingSheet: FC = () => {
+  const wineType: WineType = 'red'; // Todo: Take wineType from react-router
   const [appearance, setAppearance] = useState<CategoryItems>(
     appearanceDefault,
   );
