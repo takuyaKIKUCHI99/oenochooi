@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
-import { Button, Form, Grid, Header } from 'semantic-ui-react';
+
+import { Button, Form, Grid } from 'semantic-ui-react';
 import { Categories } from 'components/organisms/TastingCategory';
+import TastingSheetHeader from 'containers/organisms/TastingSheetHeader';
 import TastingCategory from 'containers/organisms/TastingCategory';
+
 import { CategoryItems, WineType } from 'data/tastingCategories';
 
 type Props = {
@@ -27,9 +30,7 @@ const TastingSheet: FC<Props> = ({
 }) => (
   <>
     <header>
-      <Header as="h1" textAlign="center">
-        {wineType === 'red' ? '赤' : '白'}ワイン・テイスティング用語選択用紙
-      </Header>
+      <TastingSheetHeader wineType={wineType} />
     </header>
     <main>
       <Form>
