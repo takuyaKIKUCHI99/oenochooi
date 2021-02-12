@@ -54,7 +54,7 @@ const TastingSheet: FC<Props> = ({
           category={conclusion}
           handleCategoryChange={handleCategoryChange}
         />
-        <Grid centered>
+        <Grid centered style={{ paddingBottom: '1rem' }}>
           <Button
             basic
             disabled={loading}
