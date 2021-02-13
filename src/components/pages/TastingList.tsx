@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { List } from 'semantic-ui-react';
-import ListItem, { TastingSheetsDoc } from 'components/organisms/ListItem';
+import ListItem from 'containers/organisms/ListItem';
+import { TastingSheetsDoc } from 'components/organisms/ListItem';
 import TastingListHeader from 'containers/organisms/TastingListHeader';
 
 type Props = {

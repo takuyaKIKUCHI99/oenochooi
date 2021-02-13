@@ -12,6 +12,9 @@ const App: FC = () => {
       <div className="App">
         <Container style={{ padding: '1rem 0' }}>
           <Switch>
+            <Route path="/tastingSheet/:id">
+              <TastingSheet />
+            </Route>
             <Route path="/tastingSheet">
               <TastingSheet />
             </Route>
