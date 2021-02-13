@@ -1,6 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { Categories } from 'components/organisms/TastingCategory';
 import TastingSheet from 'components/pages/TastingSheet';
+import { TastingSheetDoc } from 'components/organisms/ListItem';
+
 import {
   appearanceDefault,
   conclusionDefault,
@@ -12,7 +16,9 @@ import {
 import firebase, { db } from '../../firebase';
 
 const EnhancedTastingSheet: FC = () => {
-  const wineType: WineType = 'red'; // Todo: Take wineType from react-router
+  const location = useLocation<TastingSheetDoc>();
+
+  const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<CategoryItems>(
     appearanceDefault,
   );
@@ -21,6 +27,16 @@ const EnhancedTastingSheet: FC = () => {
   const [conclusion, setConclusion] = useState<CategoryItems>(
     conclusionDefault,
   );
+
+  useEffect(() => {
+    if (location.state) {
+      setWineType(location.state.wineType);
+      setAppearance(location.state.appearance);
+      setNose(location.state.nose);
+      setPalate(location.state.palate);
+      setConclusion(location.state.conclusion);
+    }
+  }, [location]);
 
   const [loading, setLoading] = useState(false);
 

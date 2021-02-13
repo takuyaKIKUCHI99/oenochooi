@@ -17,8 +17,14 @@ type Props = {
 const EnhancedListItem: FC<Props> = ({ tastingSheet, id }) => {
   const history = useHistory();
 
-  const handleClick = (selectedId: string) => {
-    history.push(`/tastingSheet/${selectedId}`);
+  const handleClick = (
+    selectedId: string,
+    selectedTastingSheet: TastingSheetDoc,
+  ) => {
+    history.push({
+      pathname: `/tastingSheet/${selectedId}`,
+      state: selectedTastingSheet,
+    });
   };
 
   return (

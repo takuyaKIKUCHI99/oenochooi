@@ -12,7 +12,7 @@ const TastingItems: FC<Props> = ({ keys, items, updateSubCategory }) => (
   <>
     {keys.map((key) => (
       <Checkbox
-        defaultChecked={items[key]}
+        checked={items[key]}
         key={key}
         label={key}
         style={{ margin: '0.5rem 1rem' }}

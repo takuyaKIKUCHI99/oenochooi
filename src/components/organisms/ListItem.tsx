@@ -28,12 +28,15 @@ export type TastingSheetsDoc = {
 type Props = {
   id: string;
   tastingSheet: TastingSheetDoc;
-  handleClick: (selectedId: string) => void;
+  handleClick: (
+    selectedId: string,
+    selectedTastingSheet: TastingSheetDoc,
+  ) => void;
 };
 
 const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
   <>
-    <List.Item onClick={() => handleClick(id)}>
+    <List.Item onClick={() => handleClick(id, tastingSheet)}>
       <List.Icon
         name="circle"
         color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
