@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import ListItem, { TastingSheetsDoc } from 'components/organisms/ListItem';
+import ListItem, { TastingSheetDoc } from 'components/organisms/ListItem';
 
 import { CategoryItems } from 'data/tastingCategories';
 
@@ -10,17 +10,20 @@ export type Categories = {
 };
 
 type Props = {
-  tastingSheets: TastingSheetsDoc[] | undefined;
+  id: string;
+  tastingSheet: TastingSheetDoc;
 };
 
-const EnhancedListItem: FC<Props> = ({ tastingSheets }) => {
+const EnhancedListItem: FC<Props> = ({ tastingSheet, id }) => {
   const history = useHistory();
 
-  const handleClick = (id: string) => {
-    history.push(`/tastingSheet/${id}`);
+  const handleClick = (selectedId: string) => {
+    history.push(`/tastingSheet/${selectedId}`);
   };
 
-  return <ListItem tastingSheets={tastingSheets} handleClick={handleClick} />;
+  return (
+    <ListItem id={id} tastingSheet={tastingSheet} handleClick={handleClick} />
+  );
 };
 
 export default EnhancedListItem;

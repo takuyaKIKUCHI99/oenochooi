@@ -26,23 +26,22 @@ export type TastingSheetsDoc = {
 };
 
 type Props = {
-  tastingSheets: TastingSheetsDoc[] | undefined;
-  handleClick: (id: string) => void;
+  id: string;
+  tastingSheet: TastingSheetDoc;
+  handleClick: (selectedId: string) => void;
 };
 
-const ListItem: FC<Props> = ({ tastingSheets, handleClick }) => (
+const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
   <>
-    {tastingSheets?.map((doc) => (
-      <List.Item key={doc.id} onClick={() => handleClick(doc.id)}>
-        <List.Icon
-          name="circle"
-          color={doc.tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
-        />
-        <List.Content>
-          {dateFormatter(doc.tastingSheet.createdAt.toDate())}
-        </List.Content>
-      </List.Item>
-    ))}
+    <List.Item onClick={() => handleClick(id)}>
+      <List.Icon
+        name="circle"
+        color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
+      />
+      <List.Content>
+        {dateFormatter(tastingSheet.createdAt.toDate())}
+      </List.Content>
+    </List.Item>
   </>
 );
 

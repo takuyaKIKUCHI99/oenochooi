@@ -27,6 +27,10 @@ const EnhancedTastingList: FC = () => {
       });
   }, []);
 
+  if (!tastingSheets?.length) {
+    return <p>まだテイスティングアイテムがありません</p>;
+  }
+
   return <List tastingSheets={tastingSheets} />;
 };
 

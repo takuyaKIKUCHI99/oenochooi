@@ -5,7 +5,7 @@ import { TastingSheetsDoc } from 'components/organisms/ListItem';
 import TastingListHeader from 'containers/organisms/TastingListHeader';
 
 type Props = {
-  tastingSheets: TastingSheetsDoc[] | undefined;
+  tastingSheets: TastingSheetsDoc[];
 };
 
 const TastingList: FC<Props> = ({ tastingSheets }) => (
@@ -14,13 +14,11 @@ const TastingList: FC<Props> = ({ tastingSheets }) => (
       <TastingListHeader />
     </header>
     <main>
-      {tastingSheets?.length ? (
-        <List selection verticalAlign="middle">
-          <ListItem tastingSheets={tastingSheets} />
-        </List>
-      ) : (
-        <p>まだテイスティングアイテムがありません</p>
-      )}
+      <List selection verticalAlign="middle">
+        {tastingSheets.map((doc) => (
+          <ListItem key={doc.id} tastingSheet={doc.tastingSheet} id={doc.id} />
+        ))}
+      </List>
     </main>
   </>
 );
