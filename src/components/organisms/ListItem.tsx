@@ -12,17 +12,13 @@ export type Categories = {
 };
 
 export type TastingSheetDoc = {
+  id: string;
   wineType: WineType;
   appearance: CategoryItems;
   nose: CategoryItems;
   palate: CategoryItems;
   conclusion: CategoryItems;
   createdAt: firebase.firestore.Timestamp;
-};
-
-export type TastingSheetsDoc = {
-  id: string;
-  tastingSheet: TastingSheetDoc;
 };
 
 type Props = {

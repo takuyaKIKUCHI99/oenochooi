@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { List } from 'semantic-ui-react';
 import ListItem from 'containers/organisms/ListItem';
-import { TastingSheetsDoc } from 'components/organisms/ListItem';
+import { TastingSheetDoc } from 'components/organisms/ListItem';
 import TastingListHeader from 'containers/organisms/TastingListHeader';
 
 type Props = {
-  tastingSheets: TastingSheetsDoc[];
+  tastingSheets: TastingSheetDoc[];
 };
 
 const TastingList: FC<Props> = ({ tastingSheets }) => (
@@ -15,8 +15,12 @@ const TastingList: FC<Props> = ({ tastingSheets }) => (
     </header>
     <main>
       <List selection verticalAlign="middle">
-        {tastingSheets.map((doc) => (
-          <ListItem key={doc.id} tastingSheet={doc.tastingSheet} id={doc.id} />
+        {tastingSheets.map((tastingSheet) => (
+          <ListItem
+            key={tastingSheet.id}
+            tastingSheet={tastingSheet}
+            id={tastingSheet.id}
+          />
         ))}
       </List>
     </main>

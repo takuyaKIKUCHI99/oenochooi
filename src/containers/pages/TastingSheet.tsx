@@ -64,7 +64,7 @@ const EnhancedTastingSheet: FC = () => {
     setLoading(true);
 
     db.collection('tastingSheets')
-      .add({ tastingSheet })
+      .add({ ...tastingSheet })
       .then(() => {
         setLoading(false);
         history.push('/');
