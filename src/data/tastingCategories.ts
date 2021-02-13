@@ -8,7 +8,37 @@ export type CategoryItems = {
   [key: string]: Items;
 };
 
-export const appearanceDefault: CategoryItems = {
+type SubCategories = {
+  外観: string[];
+  香り: string[];
+  味わい: string[];
+  総合評価: string[];
+};
+
+export const SUB_CATEGORIES: SubCategories = {
+  外観: ['清澄度', '輝き', '色調', '濃淡', '粘性', '外観の印象'],
+  香り: ['第一印象', '果実_花_植物', '香辛料_芳香_化学物質', '香りの印象'],
+  味わい: [
+    'アタック',
+    '甘み',
+    '酸味',
+    'タンニン分',
+    'バランス',
+    'アルコール',
+    '余韻',
+  ],
+  総合評価: [
+    '評価',
+    '適正温度',
+    'グラス',
+    'デカンタージュ',
+    '収穫年',
+    '生産地',
+    '主なぶどう品種',
+  ],
+};
+
+export const APPEARANCE_DEFAULT: CategoryItems = {
   清澄度: {
     澄んだ: false,
     深みのある: false,
@@ -58,7 +88,7 @@ export const appearanceDefault: CategoryItems = {
   },
 };
 
-export const nodeDefault: CategoryItems = {
+export const NOSE_DEFAULT: CategoryItems = {
   第一印象: {
     閉じている: false,
     控えめ: false,
@@ -133,7 +163,7 @@ export const nodeDefault: CategoryItems = {
   },
 };
 
-export const palateDefault: CategoryItems = {
+export const PALATE_DEFAULT: CategoryItems = {
   アタック: {
     軽い: false,
     やや軽い: false,
@@ -191,7 +221,7 @@ export const palateDefault: CategoryItems = {
   },
 };
 
-export const conclusionDefault: CategoryItems = {
+export const CONCLUSION_DEFAULT: CategoryItems = {
   評価: {
     シンプル_フレッシュ感を楽しむ: false,
     成熟度が高く_豊か: false,

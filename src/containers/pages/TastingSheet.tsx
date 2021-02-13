@@ -6,10 +6,10 @@ import TastingSheet from 'components/pages/TastingSheet';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
 
 import {
-  appearanceDefault,
-  conclusionDefault,
-  nodeDefault,
-  palateDefault,
+  APPEARANCE_DEFAULT,
+  CONCLUSION_DEFAULT,
+  NOSE_DEFAULT,
+  PALATE_DEFAULT,
   CategoryItems,
   WineType,
 } from 'data/tastingCategories';
@@ -21,12 +21,12 @@ const EnhancedTastingSheet: FC = () => {
 
   const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<CategoryItems>(
-    appearanceDefault,
+    APPEARANCE_DEFAULT,
   );
-  const [nose, setNose] = useState<CategoryItems>(nodeDefault);
-  const [palate, setPalate] = useState<CategoryItems>(palateDefault);
+  const [nose, setNose] = useState<CategoryItems>(NOSE_DEFAULT);
+  const [palate, setPalate] = useState<CategoryItems>(PALATE_DEFAULT);
   const [conclusion, setConclusion] = useState<CategoryItems>(
-    conclusionDefault,
+    CONCLUSION_DEFAULT,
   );
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import TastingCategory, {
   Categories,
 } from 'components/organisms/TastingCategory';
 import { Attributes } from 'containers/molecules/TastingItems';
-import { CategoryItems } from 'data/tastingCategories';
+import { SUB_CATEGORIES, CategoryItems } from 'data/tastingCategories';
 
 type Props = {
   title: Categories;
@@ -16,7 +16,7 @@ const EnhancedTastingCategory: FC<Props> = ({
   category,
   handleCategoryChange,
 }) => {
-  const subCategories = Object.keys(category);
+  const subCategories = SUB_CATEGORIES[title];
 
   const updateCategory = (attributes: Attributes) => {
     const { subCategory, items } = attributes;
