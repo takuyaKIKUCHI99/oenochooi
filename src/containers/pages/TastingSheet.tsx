@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { Categories } from 'components/organisms/TastingCategory';
 import TastingSheet from 'components/pages/TastingSheet';
@@ -16,6 +16,7 @@ import {
 import firebase, { db } from '../../firebase';
 
 const EnhancedTastingSheet: FC = () => {
+  const history = useHistory();
   const location = useLocation<TastingSheetDoc>();
 
   const [wineType, setWineType] = useState<WineType>('red');
@@ -66,6 +67,7 @@ const EnhancedTastingSheet: FC = () => {
       .add({ tastingSheet })
       .then(() => {
         setLoading(false);
+        history.push('/');
       })
       .catch((error) => {
         // Todo: Replace console when Message is ready
