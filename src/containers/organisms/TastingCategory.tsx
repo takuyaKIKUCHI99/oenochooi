@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
+
 import TastingCategory from 'components/organisms/TastingCategory';
 import { Attributes } from 'containers/molecules/TastingItems';
-import {
-  SUB_CATEGORY_TITLES,
-  CategoryTitles,
-  SubCategoryItems,
-} from 'data/tastingSheet';
+
+import { CategoryTitles, SubCategoryItems } from 'data/tastingSheet';
+import { RED_SUB_CATEGORY_TITLES } from 'data/redWine';
 
 type Props = {
   categoryTitle: CategoryTitles;
@@ -21,7 +20,7 @@ const EnhancedTastingCategory: FC<Props> = ({
   items,
   handleCategoryChange,
 }) => {
-  const subCategoryTitles = SUB_CATEGORY_TITLES[categoryTitle];
+  const subCategoryTitles = RED_SUB_CATEGORY_TITLES[categoryTitle];
 
   const updateCategory = (attributes: Attributes) => {
     const { subCategoryTitle } = attributes;

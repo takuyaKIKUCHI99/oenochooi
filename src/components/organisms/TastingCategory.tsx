@@ -26,6 +26,7 @@ const TastingCategory: FC<Props> = ({
     <Grid.Column width={14} style={{ padding: 0 }}>
       {subCategoryTitles.map((subCategoryTitle) => (
         <TastingSubCategory
+          key={subCategoryTitle}
           subCategoryTitle={subCategoryTitle}
           items={items}
           updateCategory={updateCategory}

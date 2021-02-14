@@ -7,10 +7,10 @@ import { TastingSheetDoc } from 'components/organisms/ListItem';
 import { WineType, CategoryTitles, SubCategoryItems } from 'data/tastingSheet';
 
 import {
-  APPEARANCE_DEFAULT,
-  NOSE_DEFAULT,
-  PALATE_DEFAULT,
-  CONCLUSION_DEFAULT,
+  RED_APPEARANCE_DEFAULT,
+  RED_NOSE_DEFAULT,
+  RED_PALATE_DEFAULT,
+  RED_CONCLUSION_DEFAULT,
 } from 'data/redWine';
 
 import firebase, { db } from '../../firebase';
@@ -21,12 +21,12 @@ const EnhancedTastingSheet: FC = () => {
 
   const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<SubCategoryItems>(
-    APPEARANCE_DEFAULT,
+    RED_APPEARANCE_DEFAULT,
   );
-  const [nose, setNose] = useState<SubCategoryItems>(NOSE_DEFAULT);
-  const [palate, setPalate] = useState<SubCategoryItems>(PALATE_DEFAULT);
+  const [nose, setNose] = useState<SubCategoryItems>(RED_NOSE_DEFAULT);
+  const [palate, setPalate] = useState<SubCategoryItems>(RED_PALATE_DEFAULT);
   const [conclusion, setConclusion] = useState<SubCategoryItems>(
-    CONCLUSION_DEFAULT,
+    RED_CONCLUSION_DEFAULT,
   );
 
   useEffect(() => {
