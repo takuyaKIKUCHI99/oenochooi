@@ -1,5 +1,9 @@
 import { SubCategoryItems } from 'data/tastingSheet';
 
+/**
+ * テイスティング解答用紙・用語選択用紙・赤ワイン用 2021年版
+ * https://www.wine-jyuken.com/media/second_exam/comment-sheet-r.pdf
+ */
 export const APPEARANCE_DEFAULT: SubCategoryItems = {
   清澄度: {
     1: {
@@ -25,7 +29,7 @@ export const APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '落ち着いた',
+      label: '艶のある',
       value: false,
     },
     3: {
@@ -39,41 +43,41 @@ export const APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: 'ルビー',
-      value: false,
-    },
-    3: {
       label: '黒味を帯びた',
       value: false,
     },
-    4: {
+    3: {
       label: 'オレンジがかった',
       value: false,
     },
+    4: {
+      label: '縁が明るい',
+      value: false,
+    },
     5: {
-      label: 'ガーネット',
+      label: 'ルビー（ラズベリーレッド）',
       value: false,
     },
     6: {
-      label: 'レンガ色',
+      label: 'ガーネット（ダークチェリーレッド）',
       value: false,
     },
     7: {
-      label: 'マホガニー',
+      label: 'レンガ',
       value: false,
     },
   },
   濃淡: {
     1: {
-      label: '薄い',
+      label: '無色に近い',
       value: false,
     },
     2: {
-      label: 'やや明るい',
+      label: '明るい',
       value: false,
     },
     3: {
-      label: '明るい',
+      label: 'やや明るい',
       value: false,
     },
     4: {
@@ -109,7 +113,7 @@ export const APPEARANCE_DEFAULT: SubCategoryItems = {
   },
   外観の印象: {
     1: {
-      label: '若い',
+      label: '若々しい',
       value: false,
     },
     2: {
@@ -117,39 +121,27 @@ export const APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     3: {
-      label: '軽い',
-      value: false,
-    },
-    4: {
-      label: '熟した',
-      value: false,
-    },
-    5: {
-      label: '成熟度が高い',
-      value: false,
-    },
-    6: {
-      label: '濃縮感が強い',
-      value: false,
-    },
-    7: {
       label: 'やや熟成した',
       value: false,
     },
-    8: {
+    4: {
       label: '熟成した',
       value: false,
     },
-    9: {
-      label: '酸化熟成のニュアンス',
+    5: {
+      label: '参加熟成のニュアンス',
       value: false,
     },
-    10: {
-      label: '酸化が進んだ',
+    6: {
+      label: '軽快な',
       value: false,
     },
-    11: {
-      label: '完全に酸化している',
+    7: {
+      label: '成熟度が高い',
+      value: false,
+    },
+    8: {
+      label: '濃縮感が強い',
       value: false,
     },
   },
@@ -166,11 +158,11 @@ export const NOSE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     3: {
-      label: 'しっかりと感じられる',
+      label: '開いている',
       value: false,
     },
     4: {
-      label: '力強い',
+      label: '強い',
       value: false,
     },
     5: {
@@ -194,7 +186,7 @@ export const NOSE_DEFAULT: SubCategoryItems = {
       value: false,
     },
   },
-  果実_花_植物: {
+  果実: {
     1: {
       label: 'イチゴ',
       value: false,
@@ -227,158 +219,152 @@ export const NOSE_DEFAULT: SubCategoryItems = {
       label: '乾燥イチジク',
       value: false,
     },
-    9: {
-      label: '赤ピーマン',
-      value: false,
-    },
-    10: {
-      label: 'メントール',
-      value: false,
-    },
-    11: {
-      label: 'シダ',
-      value: false,
-    },
-    12: {
+  },
+  花_植物: {
+    1: {
       label: 'バラ',
       value: false,
     },
-    13: {
+    2: {
       label: 'すみれ',
       value: false,
     },
-    14: {
+    3: {
       label: '牡丹',
       value: false,
     },
-    15: {
+    4: {
       label: 'ゼラニウム',
       value: false,
     },
-    16: {
+    5: {
+      label: 'ピーマン',
+      value: false,
+    },
+    6: {
+      label: 'トマト',
+      value: false,
+    },
+    7: {
+      label: 'メントール',
+      value: false,
+    },
+    8: {
+      label: 'シダ',
+      value: false,
+    },
+    9: {
       label: 'ローリエ',
       value: false,
     },
-    17: {
+    10: {
       label: '杉',
       value: false,
     },
-    18: {
+    11: {
       label: '針葉樹',
       value: false,
     },
-    19: {
+    12: {
+      label: 'ユーカリ',
+      value: false,
+    },
+    13: {
       label: 'ドライハーブ',
       value: false,
     },
-    20: {
+    14: {
       label: 'タバコ',
       value: false,
     },
-    21: {
+    15: {
       label: '紅茶',
       value: false,
     },
-    22: {
+    16: {
       label: 'キノコ',
       value: false,
     },
-    23: {
-      label: 'スーボア',
-      value: false,
-    },
-    24: {
-      label: 'トリュフ',
-      value: false,
-    },
-    25: {
-      label: '腐葉土',
-      value: false,
-    },
-    26: {
+    17: {
       label: '土',
       value: false,
     },
   },
-  香辛料_芳香_化学物質: {
+  芳香_香辛料_化学物質: {
     1: {
-      label: '血液',
+      label: '動物的なニュアンス',
       value: false,
     },
     2: {
-      label: '肉',
+      label: '鉄分',
       value: false,
     },
     3: {
-      label: 'なめし皮',
+      label: '生肉',
       value: false,
     },
     4: {
-      label: '燻製',
+      label: 'グリエ',
       value: false,
     },
     5: {
-      label: 'シヴェ',
+      label: '乾いた肉',
       value: false,
     },
     6: {
-      label: 'ジビエ',
+      label: 'なめし革',
       value: false,
     },
     7: {
-      label: 'コーヒー',
+      label: 'ロースト',
       value: false,
     },
     8: {
-      label: 'カカオパウダー',
+      label: 'コーヒー',
       value: false,
     },
     9: {
-      label: 'ヴァニラ',
+      label: 'チョコレート',
       value: false,
     },
     10: {
-      label: '黒胡椒',
+      label: 'ヴァニラ',
       value: false,
     },
     11: {
-      label: '丁子',
+      label: '黒胡椒',
       value: false,
     },
     12: {
-      label: 'シナモン',
+      label: '丁子',
       value: false,
     },
     13: {
-      label: 'ナツメグ',
+      label: 'シナモン',
       value: false,
     },
     14: {
-      label: '甘草',
+      label: 'ナツメグ',
       value: false,
     },
     15: {
-      label: '白檀',
+      label: '甘草',
       value: false,
     },
     16: {
-      label: '杜松の実',
+      label: 'タール',
       value: false,
     },
     17: {
-      label: '硫黄',
-      value: false,
-    },
-    18: {
       label: '樹脂',
       value: false,
     },
-    19: {
+    18: {
       label: 'ヨード',
       value: false,
     },
-    20: {
-      label: 'ランシオ',
+    19: {
+      label: 'アルコール',
       value: false,
     },
   },
@@ -388,19 +374,19 @@ export const NOSE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '還元的',
+      label: '嫌気的な',
       value: false,
     },
     3: {
-      label: '熟成感が現れている',
+      label: '発展的な',
       value: false,
     },
     4: {
-      label: '酸化熟成の段階にある',
+      label: '熟成感が現れている',
       value: false,
     },
     5: {
-      label: '酸化している',
+      label: '複雑性がある',
       value: false,
     },
     6: {
@@ -447,67 +433,67 @@ export const PALATE_DEFAULT: SubCategoryItems = {
   },
   甘み: {
     1: {
-      label: '軽い',
+      label: 'ドライ',
       value: false,
     },
     2: {
-      label: 'まろやか',
+      label: 'ソフトな',
       value: false,
     },
     3: {
-      label: '豊かな',
+      label: 'まろやか',
       value: false,
     },
     4: {
+      label: '豊かな',
+      value: false,
+    },
+    5: {
       label: '残糖がある',
       value: false,
     },
   },
   酸味: {
     1: {
-      label: 'シャープな',
-      value: false,
-    },
-    2: {
-      label: '爽やかな',
-      value: false,
-    },
-    3: {
       label: 'なめらかな',
       value: false,
     },
+    2: {
+      label: '生き生きとした',
+      value: false,
+    },
+    3: {
+      label: '爽やかな',
+      value: false,
+    },
     4: {
-      label: '円みのある',
+      label: '堅い',
       value: false,
     },
     5: {
-      label: 'キメ細かい',
+      label: 'シャープな',
       value: false,
     },
     6: {
-      label: 'やさしい',
-      value: false,
-    },
-    7: {
       label: '力強い',
       value: false,
     },
   },
   タンニン分: {
     1: {
-      label: '収斂性のある',
+      label: 'サラサラとした',
       value: false,
     },
     2: {
-      label: '力強い',
-      value: false,
-    },
-    3: {
       label: '緻密',
       value: false,
     },
+    3: {
+      label: '力強い',
+      value: false,
+    },
     4: {
-      label: 'サラサラとした',
+      label: '収斂性のある',
       value: false,
     },
     5: {
@@ -537,33 +523,29 @@ export const PALATE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     4: {
-      label: '痩せた_渇いた',
-      value: false,
-    },
-    5: {
       label: '豊満な',
       value: false,
     },
-    6: {
-      label: '肉厚な',
-      value: false,
-    },
-    7: {
+    5: {
       label: '力強い',
       value: false,
     },
-    8: {
+    6: {
       label: '流れるような',
       value: false,
     },
-    9: {
-      label: 'バランスの良い',
+    7: {
+      label: 'ふくよかな',
+      value: false,
+    },
+    8: {
+      label: 'ジューシーな',
       value: false,
     },
   },
   アルコール: {
     1: {
-      label: '控えめ',
+      label: '軽め',
       value: false,
     },
     2: {
@@ -606,23 +588,23 @@ export const PALATE_DEFAULT: SubCategoryItems = {
 export const CONCLUSION_DEFAULT: SubCategoryItems = {
   評価: {
     1: {
-      label: 'シンプル_フレッシュ感を楽しむ',
+      label: 'シンプル、フレッシュ感を楽しむ',
       value: false,
     },
     2: {
-      label: '成熟度が高く_豊か',
+      label: 'エレガントで余韻が長い',
       value: false,
     },
     3: {
-      label: '濃縮し_力強い',
+      label: '成熟度が高く豊か',
       value: false,
     },
     4: {
-      label: 'エレガントで_余韻の長い',
+      label: '濃縮し力強い',
       value: false,
     },
     5: {
-      label: '長期熟成型',
+      label: 'ポテンシャルがある',
       value: false,
     },
   },
@@ -668,93 +650,11 @@ export const CONCLUSION_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '事前(30分前)',
+      label: '直前',
       value: false,
     },
     3: {
-      label: '事前(60分前)',
-      value: false,
-    },
-    4: {
-      label: '事前(1時間前)',
-      value: false,
-    },
-  },
-  収穫年: {
-    1: {
-      label: '2010以前',
-      value: false,
-    },
-    2: {
-      label: '2010-2014',
-      value: false,
-    },
-    3: {
-      label: '2015-2018',
-      value: false,
-    },
-    4: {
-      label: '2019,2020',
-      value: false,
-    },
-  },
-  生産地: {
-    1: {
-      label: 'フランス',
-      value: false,
-    },
-    2: {
-      label: 'アメリカ',
-      value: false,
-    },
-    3: {
-      label: 'オーストラリア',
-      value: false,
-    },
-    4: {
-      label: 'スペイン',
-      value: false,
-    },
-    5: {
-      label: 'イタリア',
-      value: false,
-    },
-    6: {
-      label: '日本',
-      value: false,
-    },
-    7: {
-      label: 'アルゼンチン',
-      value: false,
-    },
-  },
-  主なぶどう品種: {
-    1: {
-      label: 'Gamay',
-      value: false,
-    },
-    2: {
-      label: 'Zinfandel',
-      value: false,
-    },
-    3: {
-      label: 'Syrah(Shiraz)',
-      value: false,
-    },
-    4: {
-      label: 'Malbec',
-      value: false,
-    },
-    5: {
-      label: 'Nebbiolo',
-      value: false,
-    },
-    6: {
-      label: 'Muscat Balley A',
-      value: false,
-    },
-    7: {
-      label: 'Tempranillo',
+      label: '事前(1時間以上前)',
       value: false,
     },
   },
