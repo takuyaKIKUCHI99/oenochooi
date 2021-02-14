@@ -4,7 +4,7 @@ import TastingItems from 'components/molecules/TastingItems';
 
 export type Attributes = {
   subCategoryTitle: string;
-  items: Items;
+  items: Items | string;
 };
 type Props = {
   items: Items;

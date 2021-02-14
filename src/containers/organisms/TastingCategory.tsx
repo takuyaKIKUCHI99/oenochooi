@@ -25,10 +25,12 @@ const EnhancedTastingCategory: FC<Props> = ({
 
   const updateCategory = (attributes: Attributes) => {
     const { subCategoryTitle } = attributes;
-    const updatedItems = attributes.items;
+    const { items: updatedItems } = attributes;
+    const value =
+      typeof updatedItems === 'string' ? updatedItems : { ...updatedItems };
     const updatedCategory = {
       ...items,
-      [subCategoryTitle]: { ...updatedItems },
+      [subCategoryTitle]: value,
     };
     handleCategoryChange(updatedCategory, categoryTitle);
   };

@@ -11,7 +11,7 @@ export type Items = {
 };
 
 export type SubCategoryItems = {
-  [key: string]: Items;
+  [key: string]: Items | string;
 };
 
 type SubCategoryTitles = {
@@ -43,3 +43,5 @@ export const SUB_CATEGORY_TITLES: SubCategoryTitles = {
     '主なブドウ品種',
   ],
 };
+
+export const INPUT_SUB_CATEGORIES = ['収穫年', '生産国', '主なブドウ品種'];
