@@ -1,68 +1,74 @@
 import React, { FC } from 'react';
-import { Button, Container, Form, Grid, Header } from 'semantic-ui-react';
-import { Categories } from 'components/organisms/TastingCategory';
-import TastingCategory from 'containers/organisms/TastingCategory';
-import { CategoryItems } from 'data/tastingCategories';
 
-export type WineType = 'red' | 'white';
+import { Button, Form, Grid } from 'semantic-ui-react';
+import TastingSheetHeader from 'containers/organisms/TastingSheetHeader';
+import TastingCategory from 'containers/organisms/TastingCategory';
+
+import { CategoryTitles, SubCategoryItems, WineType } from 'data/tastingSheet';
+
 type Props = {
-  appearance: CategoryItems;
-  conclusion: CategoryItems;
-  nose: CategoryItems;
-  palate: CategoryItems;
   wineType: WineType;
+  appearance: SubCategoryItems;
+  nose: SubCategoryItems;
+  palate: SubCategoryItems;
+  conclusion: SubCategoryItems;
   loading: boolean;
-  handleCategoryChange: (attributes: CategoryItems, title: Categories) => void;
+  handleCategoryChange: (
+    attributes: SubCategoryItems,
+    categoryTitle: CategoryTitles,
+  ) => void;
   handleSubmit: () => void;
 };
 
 const TastingSheet: FC<Props> = ({
+  wineType,
   appearance,
-  conclusion,
   nose,
   palate,
-  wineType,
+  conclusion,
   loading,
   handleCategoryChange,
   handleSubmit,
 }) => (
-  <Container style={{ padding: '1rem 0' }}>
-    <Header as="h1" textAlign="center">
-      {wineType === 'red' ? '赤' : '白'}ワイン・テイスティング用語選択用紙
-    </Header>
-    <Form>
-      <TastingCategory
-        title="外観"
-        category={appearance}
-        handleCategoryChange={handleCategoryChange}
-      />
-      <TastingCategory
-        title="香り"
-        category={nose}
-        handleCategoryChange={handleCategoryChange}
-      />
-      <TastingCategory
-        title="味わい"
-        category={palate}
-        handleCategoryChange={handleCategoryChange}
-      />
-      <TastingCategory
-        title="総合評価"
-        category={conclusion}
-        handleCategoryChange={handleCategoryChange}
-      />
-      <Grid centered>
-        <Button
-          basic
-          disabled={loading}
-          loading={loading}
-          onClick={handleSubmit}
-        >
-          保存
-        </Button>
-      </Grid>
-    </Form>
-  </Container>
+  <>
+    <header>
+      <TastingSheetHeader wineType={wineType} />
+    </header>
+    <main>
+      <Form>
+        <TastingCategory
+          categoryTitle="外観"
+          items={appearance}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <TastingCategory
+          categoryTitle="香り"
+          items={nose}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <TastingCategory
+          categoryTitle="味わい"
+          items={palate}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <TastingCategory
+          categoryTitle="総合評価"
+          items={conclusion}
+          handleCategoryChange={handleCategoryChange}
+        />
+        <Grid centered style={{ paddingBottom: '1rem' }}>
+          <Button
+            basic
+            disabled={loading}
+            loading={loading}
+            onClick={handleSubmit}
+          >
+            保存
+          </Button>
+        </Grid>
+      </Form>
+    </main>
+  </>
 );
 
 export default TastingSheet;

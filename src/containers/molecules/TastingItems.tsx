@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Items } from 'data/tastingCategories';
+import { Items } from 'data/tastingSheet';
 import TastingItems from 'components/molecules/TastingItems';
 
 export type Attributes = {
@@ -17,20 +17,19 @@ const EnhancedTastingItems: FC<Props> = ({
   items,
   updateCategory,
 }) => {
-  const keys = Object.keys(items);
+  const keys = Object.keys(items).map((el) => parseInt(el, 10));
 
-  const updateSubCategory = (item: string) => {
-    const prev = items[item];
-    const updatedItems = { ...items, [item]: !prev };
+  const toggleItemValue = (key: number) => {
+    const targetItem = items[key];
+    const updatedItems = {
+      ...items,
+      [key]: { label: targetItem.label, value: !targetItem.value },
+    };
     updateCategory({ subCategory, items: updatedItems });
   };
 
   return (
-    <TastingItems
-      keys={keys}
-      items={items}
-      updateSubCategory={updateSubCategory}
-    />
+    <TastingItems keys={keys} items={items} toggleItemValue={toggleItemValue} />
   );
 };
 

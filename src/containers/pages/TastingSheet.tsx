@@ -1,39 +1,54 @@
-import React, { FC, useState } from 'react';
-import { Categories } from 'components/organisms/TastingCategory';
-import TastingSheet, { WineType } from 'components/pages/TastingSheet';
+import React, { FC, useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+
+import TastingSheet from 'components/pages/TastingSheet';
+import { TastingSheetDoc } from 'components/organisms/ListItem';
+
+import { WineType, CategoryTitles, SubCategoryItems } from 'data/tastingSheet';
+
 import {
-  appearanceDefault,
-  conclusionDefault,
-  nodeDefault,
-  palateDefault,
-  CategoryItems,
-} from 'data/tastingCategories';
-import { db } from '../../firebase';
+  APPEARANCE_DEFAULT,
+  NOSE_DEFAULT,
+  PALATE_DEFAULT,
+  CONCLUSION_DEFAULT,
+} from 'data/redWine';
 
-type Props = {
-  wineType: WineType;
-};
+import firebase, { db } from '../../firebase';
 
-const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
-  const [appearance, setAppearance] = useState<CategoryItems>(
-    appearanceDefault,
+const EnhancedTastingSheet: FC = () => {
+  const history = useHistory();
+  const location = useLocation<TastingSheetDoc>();
+
+  const [wineType, setWineType] = useState<WineType>('red');
+  const [appearance, setAppearance] = useState<SubCategoryItems>(
+    APPEARANCE_DEFAULT,
   );
-  const [nose, setNose] = useState<CategoryItems>(nodeDefault);
-  const [palate, setPalate] = useState<CategoryItems>(palateDefault);
-  const [conclusion, setConclusion] = useState<CategoryItems>(
-    conclusionDefault,
+  const [nose, setNose] = useState<SubCategoryItems>(NOSE_DEFAULT);
+  const [palate, setPalate] = useState<SubCategoryItems>(PALATE_DEFAULT);
+  const [conclusion, setConclusion] = useState<SubCategoryItems>(
+    CONCLUSION_DEFAULT,
   );
+
+  useEffect(() => {
+    if (location.state) {
+      setWineType(location.state.wineType);
+      setAppearance(location.state.appearance);
+      setNose(location.state.nose);
+      setPalate(location.state.palate);
+      setConclusion(location.state.conclusion);
+    }
+  }, [location]);
 
   const [loading, setLoading] = useState(false);
 
   const handleCategoryChange = (
-    attributes: CategoryItems,
-    title: Categories,
+    attributes: SubCategoryItems,
+    categoryTitle: CategoryTitles,
   ) => {
-    if (title === '外観') setAppearance(attributes);
-    if (title === '香り') setNose(attributes);
-    if (title === '味わい') setPalate(attributes);
-    if (title === '総合評価') setConclusion(attributes);
+    if (categoryTitle === '外観') setAppearance(attributes);
+    if (categoryTitle === '香り') setNose(attributes);
+    if (categoryTitle === '味わい') setPalate(attributes);
+    if (categoryTitle === '総合評価') setConclusion(attributes);
   };
 
   const handleSubmit = () => {
@@ -43,14 +58,16 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
       nose: { ...nose },
       palate: { ...palate },
       conclusion: { ...conclusion },
+      createdAt: firebase.firestore.Timestamp.now(),
     };
 
     setLoading(true);
 
     db.collection('tastingSheets')
-      .add({ tastingSheet })
+      .add({ ...tastingSheet })
       .then(() => {
         setLoading(false);
+        history.push('/');
       })
       .catch((error) => {
         // Todo: Replace console when Message is ready
@@ -62,11 +79,11 @@ const EnhancedTastingSheet: FC<Props> = ({ wineType }) => {
 
   return (
     <TastingSheet
+      wineType={wineType}
       appearance={appearance}
-      conclusion={conclusion}
       nose={nose}
       palate={palate}
-      wineType={wineType}
+      conclusion={conclusion}
       loading={loading}
       handleCategoryChange={handleCategoryChange}
       handleSubmit={handleSubmit}

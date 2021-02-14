@@ -1,34 +1,43 @@
 import React, { FC } from 'react';
-import TastingCategory, {
-  Categories,
-} from 'components/organisms/TastingCategory';
+import TastingCategory from 'components/organisms/TastingCategory';
 import { Attributes } from 'containers/molecules/TastingItems';
-import { CategoryItems } from 'data/tastingCategories';
+import {
+  SUB_CATEGORY_TITLES,
+  CategoryTitles,
+  SubCategoryItems,
+} from 'data/tastingSheet';
 
 type Props = {
-  title: Categories;
-  category: CategoryItems;
-  handleCategoryChange: (attributes: CategoryItems, title: Categories) => void;
+  categoryTitle: CategoryTitles;
+  items: SubCategoryItems;
+  handleCategoryChange: (
+    attributes: SubCategoryItems,
+    title: CategoryTitles,
+  ) => void;
 };
 
 const EnhancedTastingCategory: FC<Props> = ({
-  title,
-  category,
+  categoryTitle,
+  items,
   handleCategoryChange,
 }) => {
-  const subCategories = Object.keys(category);
+  const subCategoryTitles = SUB_CATEGORY_TITLES[categoryTitle];
 
   const updateCategory = (attributes: Attributes) => {
-    const { subCategory, items } = attributes;
-    const updatedCategory = { ...category, [subCategory]: { ...items } };
-    handleCategoryChange(updatedCategory, title);
+    const { subCategory } = attributes;
+    const updatedItems = attributes.items;
+    const updatedCategory = {
+      ...items,
+      [subCategory]: { ...updatedItems },
+    };
+    handleCategoryChange(updatedCategory, categoryTitle);
   };
 
   return (
     <TastingCategory
-      category={category}
-      subCategories={subCategories}
-      title={title}
+      items={items}
+      categoryTitle={categoryTitle}
+      subCategoryTitles={subCategoryTitles}
       updateCategory={updateCategory}
     />
   );
