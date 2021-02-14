@@ -38,10 +38,8 @@ export const SUB_CATEGORY_TITLES: SubCategoryTitles = {
     '適正温度',
     'グラス',
     'デカンタージュ',
-    // '収穫年',
-    // '生産国',
-    // '主なブドウ品種',
+    '収穫年',
+    '生産国',
+    '主なブドウ品種',
   ],
 };
-
-export type TextInputSubCategories = '収穫年' | '生産国' | '主なブドウ品種';

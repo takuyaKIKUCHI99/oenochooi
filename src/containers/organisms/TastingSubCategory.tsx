@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { Input } from 'semantic-ui-react';
 import TastingSubCategory from 'components/organisms/TastingSubCategory';
 import TastingItems, { Attributes } from 'containers/molecules/TastingItems';
 
@@ -16,13 +17,26 @@ const EnhancedTastingSubCategory: FC<Props> = ({
   items,
   updateCategory,
 }) => {
-  return (
-    <TastingSubCategory subCategoryTitle={subCategoryTitle}>
+  const inputSubCategories = ['収穫年', '生産国', '主なブドウ品種'];
+
+  // Text or Checkboxes
+  const content = () => {
+    if (inputSubCategories.includes(subCategoryTitle)) {
+      return <Input transparent />;
+    }
+
+    return (
       <TastingItems
         subCategoryTitle={subCategoryTitle}
         items={items[subCategoryTitle]}
         updateCategory={updateCategory}
       />
+    );
+  };
+
+  return (
+    <TastingSubCategory subCategoryTitle={subCategoryTitle}>
+      {content()}
     </TastingSubCategory>
   );
 };
