@@ -4,19 +4,19 @@ import { Items } from 'data/tastingCategories';
 
 type Props = {
   items: Items;
-  keys: string[];
-  updateSubCategory: (item: string) => void;
+  keys: number[];
+  toggleItemValue: (key: number) => void;
 };
 
-const TastingItems: FC<Props> = ({ keys, items, updateSubCategory }) => (
+const TastingItems: FC<Props> = ({ keys, items, toggleItemValue }) => (
   <>
     {keys.map((key) => (
       <Checkbox
-        checked={items[key]}
+        checked={items[key].value}
         key={key}
-        label={key}
+        label={items[key].label}
         style={{ margin: '0.5rem 1rem' }}
-        onChange={() => updateSubCategory(key)}
+        onChange={() => toggleItemValue(key)}
       />
     ))}
   </>

@@ -1,29 +1,35 @@
 import React, { FC } from 'react';
 
 import { Button, Form, Grid } from 'semantic-ui-react';
-import { Categories } from 'components/organisms/TastingCategory';
 import TastingSheetHeader from 'containers/organisms/TastingSheetHeader';
 import TastingCategory from 'containers/organisms/TastingCategory';
 
-import { CategoryItems, WineType } from 'data/tastingCategories';
+import {
+  CategoryTitles,
+  SubCategoryItems,
+  WineType,
+} from 'data/tastingCategories';
 
 type Props = {
-  appearance: CategoryItems;
-  conclusion: CategoryItems;
-  nose: CategoryItems;
-  palate: CategoryItems;
   wineType: WineType;
+  appearance: SubCategoryItems;
+  nose: SubCategoryItems;
+  palate: SubCategoryItems;
+  conclusion: SubCategoryItems;
   loading: boolean;
-  handleCategoryChange: (attributes: CategoryItems, title: Categories) => void;
+  handleCategoryChange: (
+    attributes: SubCategoryItems,
+    categoryTitle: CategoryTitles,
+  ) => void;
   handleSubmit: () => void;
 };
 
 const TastingSheet: FC<Props> = ({
+  wineType,
   appearance,
-  conclusion,
   nose,
   palate,
-  wineType,
+  conclusion,
   loading,
   handleCategoryChange,
   handleSubmit,
@@ -35,23 +41,23 @@ const TastingSheet: FC<Props> = ({
     <main>
       <Form>
         <TastingCategory
-          title="外観"
-          category={appearance}
+          categoryTitle="外観"
+          items={appearance}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
-          title="香り"
-          category={nose}
+          categoryTitle="香り"
+          items={nose}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
-          title="味わい"
-          category={palate}
+          categoryTitle="味わい"
+          items={palate}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
-          title="総合評価"
-          category={conclusion}
+          categoryTitle="総合評価"
+          items={conclusion}
           handleCategoryChange={handleCategoryChange}
         />
         <Grid centered style={{ paddingBottom: '1rem' }}>

@@ -1,28 +1,27 @@
 import React, { FC } from 'react';
 import { Header, Grid } from 'semantic-ui-react';
 import TastingItems, { Attributes } from 'containers/molecules/TastingItems';
-import { CategoryItems } from 'data/tastingCategories';
+import { CategoryTitles, SubCategoryItems } from 'data/tastingCategories';
 
-export type Categories = '外観' | '香り' | '味わい' | '総合評価';
 type Props = {
-  category: CategoryItems;
-  subCategories: string[];
-  title: Categories;
+  categoryTitle: CategoryTitles;
+  subCategoryTitles: string[];
+  items: SubCategoryItems;
   updateCategory: (attributes: Attributes) => void;
 };
 
 const TastingCategory: FC<Props> = ({
-  category,
-  subCategories,
-  title,
+  categoryTitle,
+  subCategoryTitles,
+  items,
   updateCategory,
 }) => (
   <Grid celled>
     <Grid.Column width={2} verticalAlign="middle" textAlign="center">
-      <Header as="h2">{title}</Header>
+      <Header as="h2">{categoryTitle}</Header>
     </Grid.Column>
     <Grid.Column width={14} style={{ padding: 0 }}>
-      {subCategories.map((subCategory) => (
+      {subCategoryTitles.map((subCategory) => (
         <Grid
           celled
           key={subCategory}
@@ -36,7 +35,7 @@ const TastingCategory: FC<Props> = ({
           <Grid.Column width={14} verticalAlign="middle">
             <TastingItems
               subCategory={subCategory}
-              items={category[subCategory]}
+              items={items[subCategory]}
               updateCategory={updateCategory}
             />
           </Grid.Column>

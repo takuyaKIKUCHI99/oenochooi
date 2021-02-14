@@ -2,22 +2,18 @@ import React, { FC } from 'react';
 
 import { List } from 'semantic-ui-react';
 
-import { CategoryItems, WineType } from 'data/tastingCategories';
+import { SubCategoryItems, WineType } from 'data/tastingCategories';
 
 import firebase from 'firebase';
 import dateFormatter from 'utils/dateFormatter';
 
-export type Categories = {
-  [key: string]: CategoryItems;
-};
-
 export type TastingSheetDoc = {
   id: string;
   wineType: WineType;
-  appearance: CategoryItems;
-  nose: CategoryItems;
-  palate: CategoryItems;
-  conclusion: CategoryItems;
+  appearance: SubCategoryItems;
+  nose: SubCategoryItems;
+  palate: SubCategoryItems;
+  conclusion: SubCategoryItems;
   createdAt: firebase.firestore.Timestamp;
 };
 

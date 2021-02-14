@@ -1,6 +1,8 @@
 import React, { useState, useEffect, FC } from 'react';
+
 import List from 'components/pages/TastingList';
-import { TastingSheetDoc, Categories } from 'components/organisms/ListItem';
+import { TastingSheetDoc } from 'components/organisms/ListItem';
+
 import { db } from '../../firebase';
 
 const EnhancedTastingList: FC = () => {
@@ -16,7 +18,7 @@ const EnhancedTastingList: FC = () => {
 
         const tastingSheetDocs = docs.map<TastingSheetDoc>(
           (doc): TastingSheetDoc => {
-            const tastingSheet: Categories = doc.data();
+            const tastingSheet = doc.data();
 
             return { id: doc.id, ...tastingSheet } as TastingSheetDoc;
           },

@@ -3,12 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 import ListItem, { TastingSheetDoc } from 'components/organisms/ListItem';
 
-import { CategoryItems } from 'data/tastingCategories';
-
-export type Categories = {
-  [key: string]: CategoryItems;
-};
-
 type Props = {
   id: string;
   tastingSheet: TastingSheetDoc;
