@@ -1,29 +1,17 @@
-import React, { FC } from 'react';
-import { List } from 'semantic-ui-react';
-import ListItem from 'containers/organisms/ListItem';
-import { TastingSheetDoc } from 'components/organisms/ListItem';
+import React, { FC, ReactNode } from 'react';
+
 import TastingListHeader from 'containers/organisms/TastingListHeader';
 
 type Props = {
-  tastingSheets: TastingSheetDoc[];
+  children: ReactNode;
 };
 
-const TastingList: FC<Props> = ({ tastingSheets }) => (
+const TastingList: FC<Props> = ({ children }) => (
   <>
     <header>
       <TastingListHeader />
     </header>
-    <main>
-      <List selection verticalAlign="middle">
-        {tastingSheets.map((tastingSheet) => (
-          <ListItem
-            key={tastingSheet.id}
-            tastingSheet={tastingSheet}
-            id={tastingSheet.id}
-          />
-        ))}
-      </List>
-    </main>
+    <main>{children}</main>
   </>
 );
 

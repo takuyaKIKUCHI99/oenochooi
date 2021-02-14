@@ -1,12 +1,14 @@
 import React, { useState, useEffect, FC } from 'react';
 
-import List from 'components/pages/TastingList';
+import { List } from 'semantic-ui-react';
+import TastingList from 'components/pages/TastingList';
+import ListItem from 'containers/organisms/ListItem';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
 
 import { db } from '../../firebase';
 
 const EnhancedTastingList: FC = () => {
-  const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>();
+  const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>([]);
 
   useEffect(() => {
     db.collection('tastingSheets')
@@ -32,11 +34,25 @@ const EnhancedTastingList: FC = () => {
       });
   }, []);
 
-  if (!tastingSheets?.length) {
-    return <p>まだテイスティングアイテムがありません</p>;
-  }
+  const list = () => {
+    if (!tastingSheets.length) {
+      return <p>まだテイスティングリストはありません</p>;
+    }
 
-  return <List tastingSheets={tastingSheets} />;
+    return (
+      <List selection verticalAlign="middle">
+        {tastingSheets.map((tastingSheet) => (
+          <ListItem
+            key={tastingSheet.id}
+            tastingSheet={tastingSheet}
+            id={tastingSheet.id}
+          />
+        ))}
+      </List>
+    );
+  };
+
+  return <TastingList>{list()}</TastingList>;
 };
 
 export default EnhancedTastingList;
