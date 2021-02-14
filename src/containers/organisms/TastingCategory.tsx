@@ -24,11 +24,11 @@ const EnhancedTastingCategory: FC<Props> = ({
   const subCategoryTitles = SUB_CATEGORY_TITLES[categoryTitle];
 
   const updateCategory = (attributes: Attributes) => {
-    const { subCategory } = attributes;
+    const { subCategoryTitle } = attributes;
     const updatedItems = attributes.items;
     const updatedCategory = {
       ...items,
-      [subCategory]: { ...updatedItems },
+      [subCategoryTitle]: { ...updatedItems },
     };
     handleCategoryChange(updatedCategory, categoryTitle);
   };

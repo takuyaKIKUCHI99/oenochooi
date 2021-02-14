@@ -3,17 +3,17 @@ import { Items } from 'data/tastingSheet';
 import TastingItems from 'components/molecules/TastingItems';
 
 export type Attributes = {
-  subCategory: string;
+  subCategoryTitle: string;
   items: Items;
 };
 type Props = {
   items: Items;
-  subCategory: string;
+  subCategoryTitle: string;
   updateCategory: (attributes: Attributes) => void;
 };
 
 const EnhancedTastingItems: FC<Props> = ({
-  subCategory,
+  subCategoryTitle,
   items,
   updateCategory,
 }) => {
@@ -25,7 +25,7 @@ const EnhancedTastingItems: FC<Props> = ({
       ...items,
       [key]: { label: targetItem.label, value: !targetItem.value },
     };
-    updateCategory({ subCategory, items: updatedItems });
+    updateCategory({ subCategoryTitle, items: updatedItems });
   };
 
   return (
