@@ -1,19 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Header, Grid } from 'semantic-ui-react';
-import TastingItems, { Attributes } from 'containers/molecules/TastingItems';
-import { SubCategoryItems } from 'data/tastingSheet';
 
 type Props = {
   subCategoryTitle: string;
-  items: SubCategoryItems;
-  updateCategory: (attributes: Attributes) => void;
+  children: ReactNode;
 };
 
-const TastingSubCategory: FC<Props> = ({
-  subCategoryTitle,
-  items,
-  updateCategory,
-}) => (
+const TastingSubCategory: FC<Props> = ({ subCategoryTitle, children }) => (
   <Grid
     celled
     key={subCategoryTitle}
@@ -25,11 +18,7 @@ const TastingSubCategory: FC<Props> = ({
       </Header>
     </Grid.Column>
     <Grid.Column width={14} verticalAlign="middle">
-      <TastingItems
-        subCategoryTitle={subCategoryTitle}
-        items={items[subCategoryTitle]}
-        updateCategory={updateCategory}
-      />
+      {children}
     </Grid.Column>
   </Grid>
 );

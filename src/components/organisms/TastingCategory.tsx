@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { Header, Grid } from 'semantic-ui-react';
-import TastingSubCategory from 'components/organisms/TastingSubCategory';
+import TastingSubCategory from 'containers/organisms/TastingSubCategory';
 import { Attributes } from 'containers/molecules/TastingItems';
 
 import { CategoryTitles, SubCategoryItems } from 'data/tastingSheet';

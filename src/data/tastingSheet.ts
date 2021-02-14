@@ -33,5 +33,15 @@ export const SUB_CATEGORY_TITLES: SubCategoryTitles = {
     'アルコール',
     '余韻',
   ],
-  総合評価: ['評価', '適正温度', 'グラス', 'デカンタージュ'],
+  総合評価: [
+    '評価',
+    '適正温度',
+    'グラス',
+    'デカンタージュ',
+    // '収穫年',
+    // '生産国',
+    // '主なブドウ品種',
+  ],
 };
+
+export type TextInputSubCategories = '収穫年' | '生産国' | '主なブドウ品種';
