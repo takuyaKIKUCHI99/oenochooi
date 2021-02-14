@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import TastingSheetHeader from 'components/organisms/PageHeader';
 
-import { WineType } from 'data/tastingCategories';
+import { WineType } from 'data/tastingSheet';
 
 type Props = {
   wineType: WineType;

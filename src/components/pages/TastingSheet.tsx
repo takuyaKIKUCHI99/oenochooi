@@ -4,11 +4,7 @@ import { Button, Form, Grid } from 'semantic-ui-react';
 import TastingSheetHeader from 'containers/organisms/TastingSheetHeader';
 import TastingCategory from 'containers/organisms/TastingCategory';
 
-import {
-  CategoryTitles,
-  SubCategoryItems,
-  WineType,
-} from 'data/tastingCategories';
+import { CategoryTitles, SubCategoryItems, WineType } from 'data/tastingSheet';
 
 type Props = {
   wineType: WineType;

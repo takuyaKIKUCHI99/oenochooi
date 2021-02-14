@@ -4,15 +4,14 @@ import { useHistory, useLocation } from 'react-router-dom';
 import TastingSheet from 'components/pages/TastingSheet';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
 
+import { WineType, CategoryTitles, SubCategoryItems } from 'data/tastingSheet';
+
 import {
   APPEARANCE_DEFAULT,
   NOSE_DEFAULT,
   PALATE_DEFAULT,
   CONCLUSION_DEFAULT,
-  WineType,
-  CategoryTitles,
-  SubCategoryItems,
-} from 'data/tastingCategories';
+} from 'data/redWine';
 
 import firebase, { db } from '../../firebase';
 

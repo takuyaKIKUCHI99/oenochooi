@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { List } from 'semantic-ui-react';
 
-import { SubCategoryItems, WineType } from 'data/tastingCategories';
+import { SubCategoryItems, WineType } from 'data/tastingSheet';
 
 import firebase from 'firebase';
 import dateFormatter from 'utils/dateFormatter';

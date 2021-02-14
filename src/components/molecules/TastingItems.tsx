@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Checkbox } from 'semantic-ui-react';
-import { Items } from 'data/tastingCategories';
+import { Items } from 'data/tastingSheet';
 
 type Props = {
   items: Items;

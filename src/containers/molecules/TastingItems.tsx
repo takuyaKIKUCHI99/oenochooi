@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Items } from 'data/tastingCategories';
+import { Items } from 'data/tastingSheet';
 import TastingItems from 'components/molecules/TastingItems';
 
 export type Attributes = {

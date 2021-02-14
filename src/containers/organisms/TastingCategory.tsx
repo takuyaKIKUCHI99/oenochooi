@@ -5,7 +5,7 @@ import {
   SUB_CATEGORY_TITLES,
   CategoryTitles,
   SubCategoryItems,
-} from 'data/tastingCategories';
+} from 'data/tastingSheet';
 
 type Props = {
   categoryTitle: CategoryTitles;
