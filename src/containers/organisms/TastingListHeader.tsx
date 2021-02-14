@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { Dropdown } from 'semantic-ui-react';
 import TastingSheetHeader from 'components/organisms/PageHeader';
+
+import { WineType } from 'data/tastingSheet';
 
 const EnhancedTastingListHeader: FC = () => {
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push('/tastingSheet');
+  const handleClick = (wineType: WineType) => {
+    history.push({
+      pathname: `/tastingSheet`,
+      state: { newWineType: wineType },
+    });
   };
 
   const actionElement = (
@@ -16,11 +22,12 @@ const EnhancedTastingListHeader: FC = () => {
         <Dropdown.Item
           text="赤ワイン"
           label={{ color: 'purple', empty: true, circular: true }}
-          onClick={handleClick}
+          onClick={() => handleClick('red')}
         />
         <Dropdown.Item
           text="白ワイン"
           label={{ color: 'yellow', empty: true, circular: true }}
+          onClick={() => handleClick('white')}
         />
       </Dropdown.Menu>
     </Dropdown>
