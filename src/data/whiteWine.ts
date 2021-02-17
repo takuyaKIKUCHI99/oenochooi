@@ -1,24 +1,20 @@
 import { SubCategoryItems, SubCategoryTitles } from 'data/tastingSheet';
 
 /**
- * テイスティング解答用紙・用語選択用紙・赤ワイン用 2021年版
- * https://www.wine-jyuken.com/media/second_exam/comment-sheet-r.pdf
+ * テイスティング解答用紙・用語選択用紙・白ワイン用 2021年版
+ * https://www.wine-jyuken.com/media/second_exam/comment-sheet-w.pdf
  */
-export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
+export const WHITE_APPEARANCE_DEFAULT: SubCategoryItems = {
   清澄度: {
     1: {
       label: '澄んだ',
       value: false,
     },
     2: {
-      label: '深みのある',
-      value: false,
-    },
-    3: {
       label: 'やや濁った',
       value: false,
     },
-    4: {
+    3: {
       label: '濁った',
       value: false,
     },
@@ -29,7 +25,7 @@ export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '艶のある',
+      label: '落ち着いた',
       value: false,
     },
     3: {
@@ -39,31 +35,35 @@ export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
   },
   色調: {
     1: {
-      label: '紫がかった',
+      label: 'グリーンがかった',
       value: false,
     },
     2: {
-      label: '黒味を帯びた',
+      label: '黄金色がかった',
       value: false,
     },
     3: {
-      label: 'オレンジがかった',
+      label: 'レモンイエロー',
       value: false,
     },
     4: {
-      label: '縁が明るい',
+      label: 'イエロー',
       value: false,
     },
     5: {
-      label: 'ルビー（ラズベリーレッド）',
+      label: '黄金色',
       value: false,
     },
     6: {
-      label: 'ガーネット（ダークチェリーレッド）',
+      label: 'トパーズ',
       value: false,
     },
     7: {
-      label: 'レンガ',
+      label: 'オレンジ',
+      value: false,
+    },
+    8: {
+      label: 'アンバー',
       value: false,
     },
   },
@@ -73,22 +73,18 @@ export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '明るい',
+      label: '淡い',
       value: false,
     },
     3: {
-      label: 'やや明るい',
-      value: false,
-    },
-    4: {
       label: 'やや濃い',
       value: false,
     },
-    5: {
+    4: {
       label: '濃い',
       value: false,
     },
-    6: {
+    5: {
       label: '非常に濃い',
       value: false,
     },
@@ -117,11 +113,11 @@ export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     2: {
-      label: '若い状態を抜けた',
+      label: 'やや発展した',
       value: false,
     },
     3: {
-      label: 'やや熟成した',
+      label: '熟成のニュアンスが見える',
       value: false,
     },
     4: {
@@ -129,25 +125,21 @@ export const RED_APPEARANCE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     5: {
-      label: '酸化熟成のニュアンス',
-      value: false,
-    },
-    6: {
       label: '軽快な',
       value: false,
     },
-    7: {
+    6: {
       label: '成熟度が高い',
       value: false,
     },
-    8: {
-      label: '濃縮感が強い',
+    7: {
+      label: '濃縮感がある',
       value: false,
     },
   },
 };
 
-export const RED_NOSE_DEFAULT: SubCategoryItems = {
+export const WHITE_NOSE_DEFAULT: SubCategoryItems = {
   第一印象: {
     1: {
       label: '閉じている',
@@ -170,201 +162,201 @@ export const RED_NOSE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     6: {
-      label: '華やかな',
+      label: '心地よい',
       value: false,
     },
     7: {
-      label: '濃縮感がある',
+      label: '華やかな',
       value: false,
     },
     8: {
-      label: '深みのある',
+      label: '濃縮感がある',
       value: false,
     },
     9: {
+      label: '深みのある',
+      value: false,
+    },
+    10: {
       label: '複雑な',
       value: false,
     },
   },
   果実: {
     1: {
-      label: 'イチゴ',
+      label: '柑橘類',
       value: false,
     },
     2: {
-      label: 'ラズベリー',
+      label: '青リンゴ',
       value: false,
     },
     3: {
-      label: 'ブルーベリー',
+      label: 'リンゴ',
       value: false,
     },
     4: {
-      label: 'カシス',
+      label: '洋梨',
       value: false,
     },
     5: {
-      label: 'ブラックベリー',
+      label: 'マスカット',
       value: false,
     },
     6: {
-      label: 'ブラックチェリー',
+      label: '花梨',
       value: false,
     },
     7: {
-      label: '干しプラム',
+      label: '白桃',
       value: false,
     },
     8: {
-      label: '乾燥イチジク',
+      label: 'アプリコット',
+      value: false,
+    },
+    9: {
+      label: 'パイナップル',
+      value: false,
+    },
+    10: {
+      label: 'パッションフルーツ',
+      value: false,
+    },
+    11: {
+      label: 'ライチ',
       value: false,
     },
   },
   花_植物: {
     1: {
-      label: 'バラ',
+      label: 'すいかずら',
       value: false,
     },
     2: {
-      label: 'すみれ',
+      label: 'アカシア',
       value: false,
     },
     3: {
-      label: '牡丹',
+      label: '白バラ',
       value: false,
     },
     4: {
-      label: 'ゼラニウム',
+      label: 'キンモクセイ',
       value: false,
     },
     5: {
-      label: 'ピーマン',
+      label: '菩提樹',
       value: false,
     },
     6: {
-      label: 'トマト',
+      label: '草のような',
       value: false,
     },
     7: {
-      label: 'メントール',
+      label: 'ミント',
       value: false,
     },
     8: {
-      label: 'シダ',
+      label: 'タイム',
       value: false,
     },
     9: {
-      label: 'ローリエ',
+      label: 'アニス',
       value: false,
     },
     10: {
-      label: '杉',
+      label: 'ヴェルヴェーヌ',
       value: false,
     },
     11: {
-      label: '針葉樹',
+      label: 'アーモンド',
       value: false,
     },
     12: {
-      label: 'ユーカリ',
-      value: false,
-    },
-    13: {
-      label: 'ドライハーブ',
-      value: false,
-    },
-    14: {
-      label: 'タバコ',
-      value: false,
-    },
-    15: {
-      label: '紅茶',
-      value: false,
-    },
-    16: {
-      label: 'キノコ',
-      value: false,
-    },
-    17: {
-      label: '土',
+      label: 'ヘーゼルナッツ',
       value: false,
     },
   },
   芳香_香辛料_化学物質: {
     1: {
-      label: '動物的なニュアンス',
+      label: '貝殻',
       value: false,
     },
     2: {
-      label: '鉄分',
+      label: '石灰',
       value: false,
     },
     3: {
-      label: '生肉',
+      label: '火打石',
       value: false,
     },
     4: {
-      label: 'グリエ',
+      label: '鉱物',
       value: false,
     },
     5: {
-      label: '乾いた肉',
+      label: '海の香り',
       value: false,
     },
     6: {
-      label: 'なめし革',
+      label: 'トースト',
       value: false,
     },
     7: {
-      label: 'ロースト',
-      value: false,
-    },
-    8: {
-      label: 'コーヒー',
-      value: false,
-    },
-    9: {
-      label: 'チョコレート',
-      value: false,
-    },
-    10: {
       label: 'ヴァニラ',
       value: false,
     },
-    11: {
-      label: '黒胡椒',
+    8: {
+      label: 'コリアンダー',
       value: false,
     },
-    12: {
+    9: {
+      label: '白胡椒',
+      value: false,
+    },
+    10: {
       label: '丁子',
       value: false,
     },
+    11: {
+      label: '香木',
+      value: false,
+    },
+    12: {
+      label: 'お香',
+      value: false,
+    },
     13: {
-      label: 'シナモン',
+      label: 'ジンジャーブレッド',
       value: false,
     },
     14: {
-      label: 'ナツメグ',
+      label: '硫黄',
       value: false,
     },
     15: {
-      label: '甘草',
+      label: 'パン・ド・ミ',
       value: false,
     },
     16: {
-      label: 'タール',
+      label: 'ハチミツ',
       value: false,
     },
     17: {
-      label: '樹脂',
+      label: '乳製品',
       value: false,
     },
     18: {
-      label: 'ヨード',
+      label: 'フェノール',
       value: false,
     },
     19: {
-      label: 'アルコール',
+      label: '麝香',
+      value: false,
+    },
+    20: {
+      label: '花の蜜',
       value: false,
     },
   },
@@ -386,29 +378,41 @@ export const RED_NOSE_DEFAULT: SubCategoryItems = {
       value: false,
     },
     5: {
-      label: '複雑性がある',
+      label: '酸化熟成の段階',
       value: false,
     },
     6: {
-      label: '第1アロマが強い',
+      label: '酸化した',
       value: false,
     },
     7: {
-      label: '第2アロマが強い',
+      label: '第1アロマが強い',
       value: false,
     },
     8: {
-      label: 'ニュートラル',
+      label: '第2アロマが強い',
       value: false,
     },
     9: {
+      label: 'ニュートラル',
+      value: false,
+    },
+    10: {
       label: '木樽からのニュアンス',
+      value: false,
+    },
+    11: {
+      label: '発展的な',
+      value: false,
+    },
+    12: {
+      label: '複雑性がある',
       value: false,
     },
   },
 };
 
-export const RED_PALATE_DEFAULT: SubCategoryItems = {
+export const WHITE_PALATE_DEFAULT: SubCategoryItems = {
   アタック: {
     1: {
       label: '軽い',
@@ -479,66 +483,70 @@ export const RED_PALATE_DEFAULT: SubCategoryItems = {
       value: false,
     },
   },
-  タンニン分: {
+  苦味: {
     1: {
-      label: 'サラサラとした',
+      label: '控えめ',
       value: false,
     },
     2: {
-      label: '緻密',
+      label: '穏やかな',
       value: false,
     },
     3: {
-      label: '力強い',
+      label: 'コク（深み）を与える',
       value: false,
     },
     4: {
-      label: '収斂性のある',
+      label: '旨みをともなった',
       value: false,
     },
     5: {
-      label: 'ヴィロードのような',
-      value: false,
-    },
-    6: {
-      label: 'シルキーな',
-      value: false,
-    },
-    7: {
-      label: '溶け込んだ',
+      label: '強い',
       value: false,
     },
   },
   バランス: {
     1: {
-      label: 'スマートな',
+      label: 'スリムな',
       value: false,
     },
     2: {
-      label: '骨格のしっかりとした',
+      label: 'スムースな',
       value: false,
     },
     3: {
-      label: '固い',
+      label: '溌剌とした',
       value: false,
     },
     4: {
-      label: '豊満な',
+      label: 'ドライな',
       value: false,
     },
     5: {
-      label: '力強い',
+      label: 'まろやかな',
       value: false,
     },
     6: {
-      label: '流れるような',
+      label: 'ねっとりした',
       value: false,
     },
     7: {
-      label: 'ふくよかな',
+      label: 'コンパクトな',
       value: false,
     },
     8: {
+      label: '豊潤な',
+      value: false,
+    },
+    9: {
+      label: '厚みのある',
+      value: false,
+    },
+    10: {
+      label: 'ふくよかな',
+      value: false,
+    },
+    11: {
       label: 'ジューシーな',
       value: false,
     },
@@ -585,14 +593,14 @@ export const RED_PALATE_DEFAULT: SubCategoryItems = {
   },
 };
 
-export const RED_CONCLUSION_DEFAULT: SubCategoryItems = {
+export const WHITE_CONCLUSION_DEFAULT: SubCategoryItems = {
   評価: {
     1: {
       label: 'シンプル、フレッシュ感を楽しむ',
       value: false,
     },
     2: {
-      label: 'エレガントで余韻が長い',
+      label: 'エレガントでミネラリー',
       value: false,
     },
     3: {
@@ -610,23 +618,23 @@ export const RED_CONCLUSION_DEFAULT: SubCategoryItems = {
   },
   適正温度: {
     1: {
-      label: '10度未満',
+      label: '8度未満',
       value: false,
     },
     2: {
-      label: '10-13度',
+      label: '8-10度',
       value: false,
     },
     3: {
-      label: '14-16度',
+      label: '11-14度',
       value: false,
     },
     4: {
-      label: '17-20度',
+      label: '15-18度',
       value: false,
     },
     5: {
-      label: '21度以上',
+      label: '19度以上',
       value: false,
     },
   },
@@ -644,30 +652,16 @@ export const RED_CONCLUSION_DEFAULT: SubCategoryItems = {
       value: false,
     },
   },
-  デカンタージュ: {
-    1: {
-      label: '必要なし',
-      value: false,
-    },
-    2: {
-      label: '直前',
-      value: false,
-    },
-    3: {
-      label: '事前(1時間以上前)',
-      value: false,
-    },
-  },
 };
 
-export const RED_SUB_CATEGORY_TITLES: SubCategoryTitles = {
+export const WHITE_SUB_CATEGORY_TITLES: SubCategoryTitles = {
   外観: ['清澄度', '輝き', '色調', '濃淡', '粘性', '外観の印象'],
   香り: ['第一印象', '果実', '花_植物', '芳香_香辛料_化学物質', '香りの印象'],
   味わい: [
     'アタック',
     '甘み',
     '酸味',
-    'タンニン分',
+    '苦味',
     'バランス',
     'アルコール',
     '余韻',
@@ -676,7 +670,6 @@ export const RED_SUB_CATEGORY_TITLES: SubCategoryTitles = {
     '評価',
     '適正温度',
     'グラス',
-    'デカンタージュ',
     '収穫年',
     '生産国',
     '主なブドウ品種',

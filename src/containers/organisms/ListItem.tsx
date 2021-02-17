@@ -17,7 +17,7 @@ const EnhancedListItem: FC<Props> = ({ tastingSheet, id }) => {
   ) => {
     history.push({
       pathname: `/tastingSheet/${selectedId}`,
-      state: selectedTastingSheet,
+      state: { selectedTastingSheet },
     });
   };
 

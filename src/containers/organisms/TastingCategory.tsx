@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
+
 import TastingCategory from 'components/organisms/TastingCategory';
 import { Attributes } from 'containers/molecules/TastingItems';
-import {
-  SUB_CATEGORY_TITLES,
-  CategoryTitles,
-  SubCategoryItems,
-} from 'data/tastingSheet';
+
+import { CategoryTitles, SubCategoryItems, WineType } from 'data/tastingSheet';
+import { RED_SUB_CATEGORY_TITLES } from 'data/redWine';
+import { WHITE_SUB_CATEGORY_TITLES } from 'data/whiteWine';
 
 type Props = {
+  wineType: WineType;
   categoryTitle: CategoryTitles;
   items: SubCategoryItems;
   handleCategoryChange: (
@@ -17,18 +18,24 @@ type Props = {
 };
 
 const EnhancedTastingCategory: FC<Props> = ({
+  wineType,
   categoryTitle,
   items,
   handleCategoryChange,
 }) => {
-  const subCategoryTitles = SUB_CATEGORY_TITLES[categoryTitle];
+  const subCategoryTitles =
+    wineType === 'red'
+      ? RED_SUB_CATEGORY_TITLES[categoryTitle]
+      : WHITE_SUB_CATEGORY_TITLES[categoryTitle];
 
   const updateCategory = (attributes: Attributes) => {
-    const { subCategory } = attributes;
-    const updatedItems = attributes.items;
+    const { subCategoryTitle } = attributes;
+    const { items: updatedItems } = attributes;
+    const value =
+      typeof updatedItems === 'string' ? updatedItems : { ...updatedItems };
     const updatedCategory = {
       ...items,
-      [subCategory]: { ...updatedItems },
+      [subCategoryTitle]: value,
     };
     handleCategoryChange(updatedCategory, categoryTitle);
   };

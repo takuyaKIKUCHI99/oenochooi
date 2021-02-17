@@ -37,21 +37,25 @@ const TastingSheet: FC<Props> = ({
     <main>
       <Form>
         <TastingCategory
+          wineType={wineType}
           categoryTitle="外観"
           items={appearance}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
+          wineType={wineType}
           categoryTitle="香り"
           items={nose}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
+          wineType={wineType}
           categoryTitle="味わい"
           items={palate}
           handleCategoryChange={handleCategoryChange}
         />
         <TastingCategory
+          wineType={wineType}
           categoryTitle="総合評価"
           items={conclusion}
           handleCategoryChange={handleCategoryChange}

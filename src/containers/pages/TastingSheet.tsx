@@ -5,37 +5,62 @@ import TastingSheet from 'components/pages/TastingSheet';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
 
 import { WineType, CategoryTitles, SubCategoryItems } from 'data/tastingSheet';
-
 import {
-  APPEARANCE_DEFAULT,
-  NOSE_DEFAULT,
-  PALATE_DEFAULT,
-  CONCLUSION_DEFAULT,
+  RED_APPEARANCE_DEFAULT,
+  RED_NOSE_DEFAULT,
+  RED_PALATE_DEFAULT,
+  RED_CONCLUSION_DEFAULT,
 } from 'data/redWine';
+import {
+  WHITE_APPEARANCE_DEFAULT,
+  WHITE_NOSE_DEFAULT,
+  WHITE_PALATE_DEFAULT,
+  WHITE_CONCLUSION_DEFAULT,
+} from 'data/whiteWine';
 
 import firebase, { db } from '../../firebase';
 
+type LocationState = {
+  selectedTastingSheet: TastingSheetDoc;
+  newWineType: WineType;
+};
+
 const EnhancedTastingSheet: FC = () => {
   const history = useHistory();
-  const location = useLocation<TastingSheetDoc>();
+  const location = useLocation<LocationState>();
 
   const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<SubCategoryItems>(
-    APPEARANCE_DEFAULT,
+    RED_APPEARANCE_DEFAULT,
   );
-  const [nose, setNose] = useState<SubCategoryItems>(NOSE_DEFAULT);
-  const [palate, setPalate] = useState<SubCategoryItems>(PALATE_DEFAULT);
+  const [nose, setNose] = useState<SubCategoryItems>(RED_NOSE_DEFAULT);
+  const [palate, setPalate] = useState<SubCategoryItems>(RED_PALATE_DEFAULT);
   const [conclusion, setConclusion] = useState<SubCategoryItems>(
-    CONCLUSION_DEFAULT,
+    RED_CONCLUSION_DEFAULT,
   );
 
   useEffect(() => {
-    if (location.state) {
-      setWineType(location.state.wineType);
-      setAppearance(location.state.appearance);
-      setNose(location.state.nose);
-      setPalate(location.state.palate);
-      setConclusion(location.state.conclusion);
+    if (location.state.newWineType) {
+      setWineType(location.state.newWineType);
+      if (location.state.newWineType === 'red') {
+        setAppearance(RED_APPEARANCE_DEFAULT);
+        setNose(RED_NOSE_DEFAULT);
+        setPalate(RED_PALATE_DEFAULT);
+        setConclusion(RED_CONCLUSION_DEFAULT);
+      } else {
+        setAppearance(WHITE_APPEARANCE_DEFAULT);
+        setNose(WHITE_NOSE_DEFAULT);
+        setPalate(WHITE_PALATE_DEFAULT);
+        setConclusion(WHITE_CONCLUSION_DEFAULT);
+      }
+    }
+
+    if (location.state.selectedTastingSheet) {
+      setWineType(location.state.selectedTastingSheet.wineType);
+      setAppearance(location.state.selectedTastingSheet.appearance);
+      setNose(location.state.selectedTastingSheet.nose);
+      setPalate(location.state.selectedTastingSheet.palate);
+      setConclusion(location.state.selectedTastingSheet.conclusion);
     }
   }, [location]);
 
