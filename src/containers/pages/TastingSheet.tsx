@@ -29,16 +29,15 @@ const EnhancedTastingSheet: FC = () => {
   const history = useHistory();
   const location = useLocation<LocationState>();
 
-  const [wineType, setWineType] = useState<WineType>('red');
-  const [appearance, setAppearance] = useState<SubCategoryItems>(
-    RED_APPEARANCE_DEFAULT,
-  );
-  const [nose, setNose] = useState<SubCategoryItems>(RED_NOSE_DEFAULT);
-  const [palate, setPalate] = useState<SubCategoryItems>(RED_PALATE_DEFAULT);
-  const [conclusion, setConclusion] = useState<SubCategoryItems>(
-    RED_CONCLUSION_DEFAULT,
-  );
+  const [loading, setLoading] = useState(false);
 
+  const [wineType, setWineType] = useState<WineType>();
+  const [appearance, setAppearance] = useState<SubCategoryItems>();
+  const [nose, setNose] = useState<SubCategoryItems>();
+  const [palate, setPalate] = useState<SubCategoryItems>();
+  const [conclusion, setConclusion] = useState<SubCategoryItems>();
+
+  // Set TastingSheet value
   useEffect(() => {
     if (location.state.newWineType) {
       setWineType(location.state.newWineType);
@@ -63,8 +62,6 @@ const EnhancedTastingSheet: FC = () => {
       setConclusion(location.state.selectedTastingSheet.conclusion);
     }
   }, [location]);
-
-  const [loading, setLoading] = useState(false);
 
   const handleCategoryChange = (
     attributes: SubCategoryItems,
@@ -101,6 +98,8 @@ const EnhancedTastingSheet: FC = () => {
         setLoading(false);
       });
   };
+
+  if (!wineType || !appearance || !nose || !palate || !conclusion) return null;
 
   return (
     <TastingSheet
