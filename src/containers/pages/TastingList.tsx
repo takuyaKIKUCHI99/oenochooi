@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 
 import { List } from 'semantic-ui-react';
+import Spinner from 'components/molecules/Spinner';
 import TastingList from 'components/pages/TastingList';
 import ListItem from 'containers/organisms/ListItem';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
@@ -9,8 +10,11 @@ import { db } from '../../firebase';
 
 const EnhancedTastingList: FC = () => {
   const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     db.collection('tastingSheets')
       .orderBy('createdAt', 'desc')
       .get()
@@ -26,6 +30,7 @@ const EnhancedTastingList: FC = () => {
           },
         );
         setTastingSheets(tastingSheetDocs);
+        setIsLoading(false);
       })
       .catch(() => {
         // Todo: Error handling will be implemented later!
@@ -35,6 +40,10 @@ const EnhancedTastingList: FC = () => {
   }, []);
 
   const list = () => {
+    if (isLoading) {
+      return <Spinner />;
+    }
+
     if (!tastingSheets.length) {
       return <p>まだテイスティングリストはありません</p>;
     }
