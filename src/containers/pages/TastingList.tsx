@@ -9,7 +9,7 @@ import { TastingSheetDoc } from 'components/organisms/ListItem';
 import { db } from '../../firebase';
 
 const EnhancedTastingList: FC = () => {
-  const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>([]);
+  const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const EnhancedTastingList: FC = () => {
 
     db.collection('tastingSheets')
       .orderBy('createdAt', 'desc')
-      .get()
+      .get({ source: 'cache' })
       .then((querySnapshot) => {
         const { docs } = querySnapshot;
         if (!docs) return;
@@ -40,9 +40,8 @@ const EnhancedTastingList: FC = () => {
   }, []);
 
   const list = () => {
-    if (isLoading) {
-      return <Spinner />;
-    }
+    if (isLoading) return <Spinner />;
+    if (!tastingSheets) return null;
 
     if (!tastingSheets.length) {
       return <p>まだテイスティングリストはありません</p>;
