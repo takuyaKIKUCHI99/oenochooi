@@ -9,41 +9,38 @@ type TastingSheetArgs = {
   conclusion: SubCategoryItems;
 };
 
-const createTastingSheet = (tastingSheetArgs: TastingSheetArgs): void => {
-  const createdAt = firebase.firestore.Timestamp.now();
-
-  db.collection('tastingSheets')
-    .add({ ...tastingSheetArgs, createdAt })
-    .catch((error) => {
-      // Todo: Replace console when Message is ready
-      // eslint-disable-next-line no-console
-      console.error('Error adding document: ', error);
-    });
-};
-
-const updateTastingSheet = (
-  tastingSheetArgs: TastingSheetArgs,
-  id: string,
-): void => {
-  db.collection('tastingSheets')
-    .doc(id)
-    .update({ ...tastingSheetArgs })
-    .catch((error) => {
-      // Todo: Replace console when Message is ready
-      // eslint-disable-next-line no-console
-      console.error('Error adding document: ', error);
-    });
-};
-
 const firestoreDataManipulation = (
   tastingSheetArgs: TastingSheetArgs,
   id: string | undefined,
-): void => {
-  if (id) {
-    updateTastingSheet({ ...tastingSheetArgs }, id);
-  } else {
-    createTastingSheet({ ...tastingSheetArgs });
-  }
+): Promise<string> => {
+  const type = id ? 'update' : 'create';
+
+  return new Promise((resolve) => {
+    if (type === 'create') {
+      const createdAt = firebase.firestore.Timestamp.now();
+
+      db.collection('tastingSheets')
+        .add({ ...tastingSheetArgs, createdAt })
+        .then(() => resolve('resolved'))
+        .catch((error) => {
+          // Todo: Replace console when Message is ready
+          // eslint-disable-next-line no-console
+          console.error('Error adding document: ', error);
+        });
+    }
+
+    if (type === 'update') {
+      db.collection('tastingSheets')
+        .doc(id)
+        .update({ ...tastingSheetArgs })
+        .then(() => resolve('resolved'))
+        .catch((error) => {
+          // Todo: Replace console when Message is ready
+          // eslint-disable-next-line no-console
+          console.error('Error adding document: ', error);
+        });
+    }
+  });
 };
 
 export default firestoreDataManipulation;

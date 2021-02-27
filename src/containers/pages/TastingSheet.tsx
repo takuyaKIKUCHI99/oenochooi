@@ -75,7 +75,7 @@ const EnhancedTastingSheet: FC = () => {
     if (categoryTitle === '総合評価') setConclusion(attributes);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const tastingSheetArgs = {
       wineType,
       appearance: { ...appearance },
@@ -86,7 +86,7 @@ const EnhancedTastingSheet: FC = () => {
 
     setLoading(true);
 
-    firestoreDataManipulation(tastingSheetArgs, id);
+    await firestoreDataManipulation(tastingSheetArgs, id);
 
     setLoading(false);
     history.push('/');
