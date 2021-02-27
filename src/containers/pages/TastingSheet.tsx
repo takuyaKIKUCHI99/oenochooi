@@ -18,7 +18,7 @@ import {
   WHITE_CONCLUSION_DEFAULT,
 } from 'data/whiteWine';
 
-import firebase, { db } from '../../firebase';
+import firestoreDataManipulation from 'utils/firestoreDataManipulation';
 
 type LocationState = {
   selectedTastingSheet: TastingSheetDoc;
@@ -31,7 +31,8 @@ const EnhancedTastingSheet: FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [wineType, setWineType] = useState<WineType>();
+  const [id, setId] = useState<string>();
+  const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<SubCategoryItems>();
   const [nose, setNose] = useState<SubCategoryItems>();
   const [palate, setPalate] = useState<SubCategoryItems>();
@@ -55,6 +56,7 @@ const EnhancedTastingSheet: FC = () => {
     }
 
     if (location.state.selectedTastingSheet) {
+      setId(location.state.selectedTastingSheet.id);
       setWineType(location.state.selectedTastingSheet.wineType);
       setAppearance(location.state.selectedTastingSheet.appearance);
       setNose(location.state.selectedTastingSheet.nose);
@@ -74,29 +76,20 @@ const EnhancedTastingSheet: FC = () => {
   };
 
   const handleSubmit = () => {
-    const tastingSheet = {
+    const tastingSheetArgs = {
       wineType,
       appearance: { ...appearance },
       nose: { ...nose },
       palate: { ...palate },
       conclusion: { ...conclusion },
-      createdAt: firebase.firestore.Timestamp.now(),
     };
 
     setLoading(true);
 
-    db.collection('tastingSheets')
-      .add({ ...tastingSheet })
-      .then(() => {
-        setLoading(false);
-        history.push('/');
-      })
-      .catch((error) => {
-        // Todo: Replace console when Message is ready
-        // eslint-disable-next-line no-console
-        console.error('Error adding document: ', error);
-        setLoading(false);
-      });
+    firestoreDataManipulation(tastingSheetArgs, id);
+
+    setLoading(false);
+    history.push('/');
   };
 
   if (!wineType || !appearance || !nose || !palate || !conclusion) return null;
