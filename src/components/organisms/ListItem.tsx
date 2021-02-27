@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { List } from 'semantic-ui-react';
+import { Dropdown, List } from 'semantic-ui-react';
+import EllipsisMenu from 'components/molecules/EllipsisMenu';
 
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
 
@@ -27,17 +28,21 @@ type Props = {
 };
 
 const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
-  <>
-    <List.Item onClick={() => handleClick(id, tastingSheet)}>
-      <List.Icon
-        name="circle"
-        color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
-      />
-      <List.Content>
-        {dateFormatter(tastingSheet.createdAt.toDate())}
-      </List.Content>
-    </List.Item>
-  </>
+  <List.Item onClick={() => handleClick(id, tastingSheet)}>
+    <List.Content floated="right">
+      <EllipsisMenu>
+        <Dropdown.Item icon="edit" text="タイトル編集" />
+        <Dropdown.Item icon="trash" text="削除" />
+      </EllipsisMenu>
+    </List.Content>
+    <List.Icon
+      name="circle"
+      color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
+    />
+    <List.Content>
+      {dateFormatter(tastingSheet.createdAt.toDate())}
+    </List.Content>
+  </List.Item>
 );
 
 export default ListItem;
