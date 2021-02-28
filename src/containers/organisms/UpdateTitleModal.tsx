@@ -1,26 +1,35 @@
 import React, { FC, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
-import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
+import {
+  Button,
+  Dropdown,
+  Header,
+  Icon,
+  Input,
+  Modal,
+} from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
 import firestoreDataManipulation from 'utils/firestoreDataManipulation';
 
 type Props = {
   id: string;
+  title: string;
 };
 
-const UpdateTitleModal: FC<Props> = ({ id }) => {
-  const history = useHistory();
+const UpdateTitleModal: FC<Props> = ({ id, title }) => {
+  // const history = useHistory();
   const [open, setOpen] = useState(false);
+  const [titleInput, setTitleInput] = useState(title);
 
   const toggleModal = (bool: boolean) => {
     setOpen(bool);
   };
 
   const handleSubmit = async () => {
-    await firestoreDataManipulation('update', id);
-    history.go(0);
+    await firestoreDataManipulation('update', id, { title: titleInput });
+    // history.go(0);
     toggleModal(false);
   };
 
@@ -37,7 +46,12 @@ const UpdateTitleModal: FC<Props> = ({ id }) => {
         テイスティングシートのタイトルを編集
       </Header>
       <Modal.Content>
-        <p>「タイトルなし」（作成日時：yyyy/mm/dd hh:mm:ss) を削除しますか</p>
+        <Input
+          fluid
+          value={titleInput}
+          placeholder="タイトルを入力してください"
+          onChange={(event) => setTitleInput(event.target.value)}
+        />
       </Modal.Content>
       <Modal.Actions>
         <Button basic color="red" inverted onClick={() => toggleModal(false)}>
