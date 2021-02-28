@@ -19,7 +19,7 @@ const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
   };
 
   const handleDelete = async () => {
-    await firestoreDataManipulation({ id }, 'delete');
+    await firestoreDataManipulation('delete', id);
     history.go(0);
     toggleModal(false);
   };

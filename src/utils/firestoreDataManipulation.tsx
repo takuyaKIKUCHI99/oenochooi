@@ -2,23 +2,20 @@ import { SubCategoryItems, WineType } from 'data/tastingSheet';
 import firebase, { db } from '../firebase';
 
 type TastingSheetArgs = {
-  wineType: WineType;
-  appearance: SubCategoryItems;
-  nose: SubCategoryItems;
-  palate: SubCategoryItems;
-  conclusion: SubCategoryItems;
-};
-
-type Args = {
-  tastingSheetArgs?: TastingSheetArgs;
-  id?: string;
-};
+  appearance?: SubCategoryItems;
+  conclusion?: SubCategoryItems;
+  nose?: SubCategoryItems;
+  palate?: SubCategoryItems;
+  title?: string;
+  wineType?: WineType;
+} | null;
 
 type Type = 'create' | 'update' | 'delete';
 
 const firestoreDataManipulation = (
-  { tastingSheetArgs, id }: Args,
   type: Type,
+  id: string | undefined,
+  tastingSheetArgs: TastingSheetArgs = null,
 ): Promise<string> => {
   const collection = 'tastingSheets';
 

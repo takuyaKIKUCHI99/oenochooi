@@ -37,6 +37,7 @@ const EnhancedTastingSheet: FC = () => {
   const [nose, setNose] = useState<SubCategoryItems>();
   const [palate, setPalate] = useState<SubCategoryItems>();
   const [conclusion, setConclusion] = useState<SubCategoryItems>();
+  const [title, setTitle] = useState<string>('');
 
   // Set TastingSheet value
   useEffect(() => {
@@ -62,6 +63,7 @@ const EnhancedTastingSheet: FC = () => {
       setNose(location.state.selectedTastingSheet.nose);
       setPalate(location.state.selectedTastingSheet.palate);
       setConclusion(location.state.selectedTastingSheet.conclusion);
+      setTitle(location.state.selectedTastingSheet.title);
     }
   }, [location]);
 
@@ -82,12 +84,13 @@ const EnhancedTastingSheet: FC = () => {
       nose: { ...nose },
       palate: { ...palate },
       conclusion: { ...conclusion },
+      title,
     };
     const type = id ? 'update' : 'create';
 
     setLoading(true);
 
-    await firestoreDataManipulation({ tastingSheetArgs, id }, type);
+    await firestoreDataManipulation(type, id, tastingSheetArgs);
 
     setLoading(false);
     history.push('/');

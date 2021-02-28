@@ -19,7 +19,7 @@ const UpdateTitleModal: FC<Props> = ({ id }) => {
   };
 
   const handleSubmit = async () => {
-    await firestoreDataManipulation({ id }, 'update');
+    await firestoreDataManipulation('update', id);
     history.go(0);
     toggleModal(false);
   };

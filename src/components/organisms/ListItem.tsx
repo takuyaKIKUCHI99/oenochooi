@@ -9,13 +9,14 @@ import firebase from 'firebase';
 import dateFormatter from 'utils/dateFormatter';
 
 export type TastingSheetDoc = {
-  id: string;
-  wineType: WineType;
   appearance: SubCategoryItems;
-  nose: SubCategoryItems;
-  palate: SubCategoryItems;
   conclusion: SubCategoryItems;
   createdAt: firebase.firestore.Timestamp;
+  id: string;
+  nose: SubCategoryItems;
+  palate: SubCategoryItems;
+  title: string;
+  wineType: WineType;
 };
 
 type Props = {
