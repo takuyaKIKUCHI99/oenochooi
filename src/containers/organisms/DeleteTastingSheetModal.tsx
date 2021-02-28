@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
 import ConfirmationModal from 'components/organisms/ConfirmationModal';
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
+  const history = useHistory();
   const [open, setOpen] = useState(false);
 
   const toggleModal = (bool: boolean) => {
@@ -18,6 +20,7 @@ const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
 
   const handleDelete = async () => {
     await firestoreDataManipulation({ id }, 'delete');
+    history.go(0);
     toggleModal(false);
   };
 
