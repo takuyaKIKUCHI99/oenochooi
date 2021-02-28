@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
-import { Dropdown, List } from 'semantic-ui-react';
-import EllipsisMenu from 'components/molecules/EllipsisMenu';
-import DeleteTastingSheetModal from 'containers/organisms/DeleteTastingSheetModal';
+import { List } from 'semantic-ui-react';
+import EllipsisMenu from 'containers/molecules/EllipsisMenu';
 
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
 
@@ -31,10 +30,7 @@ type Props = {
 const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
   <List.Item onClick={() => handleClick(id, tastingSheet)}>
     <List.Content floated="right">
-      <EllipsisMenu>
-        <Dropdown.Item icon="edit" text="タイトル編集" />
-        <DeleteTastingSheetModal id={id} />
-      </EllipsisMenu>
+      <EllipsisMenu id={id} />
     </List.Content>
     <List.Icon
       name="circle"
