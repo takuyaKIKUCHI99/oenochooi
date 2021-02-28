@@ -33,7 +33,7 @@ const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
     <List.Content floated="right">
       <EllipsisMenu>
         <Dropdown.Item icon="edit" text="タイトル編集" />
-        <DeleteTastingSheetModal />
+        <DeleteTastingSheetModal id={id} />
       </EllipsisMenu>
     </List.Content>
     <List.Icon

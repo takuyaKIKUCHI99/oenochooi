@@ -20,34 +20,38 @@ const firestoreDataManipulation = (
   { tastingSheetArgs, id }: Args,
   type: Type,
 ): Promise<string> => {
+  const collection = 'tastingSheets';
+
+  const handleError = (error: string) => {
+    // Todo: Replace console when Message is ready
+    // eslint-disable-next-line no-console
+    console.error('Error adding document: ', error);
+  };
+
   return new Promise((resolve) => {
     if (type === 'create') {
       const createdAt = firebase.firestore.Timestamp.now();
 
-      db.collection('tastingSheets')
+      db.collection(collection)
         .add({ ...tastingSheetArgs, createdAt })
         .then(() => resolve('resolved'))
-        .catch((error) => {
-          // Todo: Replace console when Message is ready
-          // eslint-disable-next-line no-console
-          console.error('Error adding document: ', error);
-        });
+        .catch((error: string) => handleError(error));
     }
 
     if (type === 'update') {
-      db.collection('tastingSheets')
+      db.collection(collection)
         .doc(id)
         .update({ ...tastingSheetArgs })
         .then(() => resolve('resolved'))
-        .catch((error) => {
-          // Todo: Replace console when Message is ready
-          // eslint-disable-next-line no-console
-          console.error('Error adding document: ', error);
-        });
+        .catch((error: string) => handleError(error));
     }
 
     if (type === 'delete') {
-      // Todo: update
+      db.collection(collection)
+        .doc(id)
+        .delete()
+        .then(() => resolve('resolved'))
+        .catch((error: string) => handleError(error));
     }
   });
 };

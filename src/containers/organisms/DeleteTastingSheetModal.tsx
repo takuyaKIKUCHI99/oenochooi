@@ -1,12 +1,24 @@
 import React, { FC, useState } from 'react';
+
 import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
 import ConfirmationModal from 'components/organisms/ConfirmationModal';
 
-const DeleteTastingSheetModal: FC = () => {
+import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+
+type Props = {
+  id: string;
+};
+
+const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
   const [open, setOpen] = useState(false);
 
   const toggleModal = (bool: boolean) => {
     setOpen(bool);
+  };
+
+  const handleDelete = async () => {
+    await firestoreDataManipulation({ id }, 'delete');
+    toggleModal(false);
   };
 
   const trigger = <Dropdown.Item icon="trash" text="削除" />;
@@ -25,10 +37,10 @@ const DeleteTastingSheetModal: FC = () => {
         <p>「タイトルなし」（作成日時：yyyy/mm/dd hh:mm:ss) を削除しますか</p>
       </Modal.Content>
       <Modal.Actions>
-        <Button basic color="red" inverted onClick={() => setOpen(false)}>
+        <Button basic color="red" inverted onClick={() => toggleModal(false)}>
           <Icon name="remove" /> No
         </Button>
-        <Button color="green" inverted onClick={() => setOpen(false)}>
+        <Button color="green" inverted onClick={handleDelete}>
           <Icon name="checkmark" /> Yes
         </Button>
       </Modal.Actions>
