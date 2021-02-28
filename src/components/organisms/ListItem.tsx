@@ -31,7 +31,11 @@ type Props = {
 const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
   <List.Item onClick={() => handleClick(id, tastingSheet)}>
     <List.Content floated="right">
-      <EllipsisMenu id={id} />
+      <EllipsisMenu
+        id={id}
+        title={tastingSheet.title}
+        createdAt={tastingSheet.createdAt}
+      />
     </List.Content>
     <List.Icon
       name="circle"

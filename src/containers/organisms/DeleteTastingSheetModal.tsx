@@ -5,12 +5,17 @@ import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
 import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+import dateFormatter from 'utils/dateFormatter';
+
+import firebase from 'firebase';
 
 type Props = {
   id: string;
+  title: string;
+  createdAt: firebase.firestore.Timestamp;
 };
 
-const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
+const DeleteTastingSheetModal: FC<Props> = ({ id, title, createdAt }) => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
@@ -37,14 +42,19 @@ const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
         テイスティングシートの削除
       </Header>
       <Modal.Content>
-        <p>「タイトルなし」（作成日時：yyyy/mm/dd hh:mm:ss) を削除しますか</p>
+        <p>
+          {`「${title || 'タイトルなし'}」（作成日時：${dateFormatter(
+            createdAt.toDate(),
+          )})
+          を削除しますか`}
+        </p>
       </Modal.Content>
       <Modal.Actions>
         <Button basic color="red" inverted onClick={() => toggleModal(false)}>
-          <Icon name="remove" /> No
+          <Icon name="remove" /> キャンセル
         </Button>
         <Button color="green" inverted onClick={handleDelete}>
-          <Icon name="checkmark" /> Yes
+          <Icon name="checkmark" /> 削除
         </Button>
       </Modal.Actions>
     </ModalHolder>
