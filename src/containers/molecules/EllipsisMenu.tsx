@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { Dropdown } from 'semantic-ui-react';
+
 import EllipsisMenu from 'components/molecules/EllipsisMenu';
 import DeleteTastingSheetModal from 'containers/organisms/DeleteTastingSheetModal';
+import UpdateTitleModal from 'containers/organisms/UpdateTitleModal';
 
 type Props = {
   id: string;
@@ -9,7 +10,7 @@ type Props = {
 
 const EnhancedEllipsisMenu: FC<Props> = ({ id }) => (
   <EllipsisMenu>
-    <Dropdown.Item icon="edit" text="タイトル編集" />
+    <UpdateTitleModal id={id} />
     <DeleteTastingSheetModal id={id} />
   </EllipsisMenu>
 );
