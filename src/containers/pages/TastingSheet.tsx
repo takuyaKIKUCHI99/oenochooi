@@ -83,10 +83,11 @@ const EnhancedTastingSheet: FC = () => {
       palate: { ...palate },
       conclusion: { ...conclusion },
     };
+    const type = id ? 'update' : 'create';
 
     setLoading(true);
 
-    await firestoreDataManipulation(tastingSheetArgs, id);
+    await firestoreDataManipulation({ tastingSheetArgs, id }, type);
 
     setLoading(false);
     history.push('/');

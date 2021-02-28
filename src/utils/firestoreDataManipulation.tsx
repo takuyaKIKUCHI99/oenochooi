@@ -9,12 +9,17 @@ type TastingSheetArgs = {
   conclusion: SubCategoryItems;
 };
 
-const firestoreDataManipulation = (
-  tastingSheetArgs: TastingSheetArgs,
-  id: string | undefined,
-): Promise<string> => {
-  const type = id ? 'update' : 'create';
+type Args = {
+  tastingSheetArgs?: TastingSheetArgs;
+  id?: string;
+};
 
+type Type = 'create' | 'update' | 'delete';
+
+const firestoreDataManipulation = (
+  { tastingSheetArgs, id }: Args,
+  type: Type,
+): Promise<string> => {
   return new Promise((resolve) => {
     if (type === 'create') {
       const createdAt = firebase.firestore.Timestamp.now();
@@ -39,6 +44,10 @@ const firestoreDataManipulation = (
           // eslint-disable-next-line no-console
           console.error('Error adding document: ', error);
         });
+    }
+
+    if (type === 'delete') {
+      // Todo: update
     }
   });
 };
