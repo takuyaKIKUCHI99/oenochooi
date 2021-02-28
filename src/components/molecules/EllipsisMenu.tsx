@@ -7,7 +7,7 @@ type Props = {
 
 const EllipsisMenu: FC<Props> = ({ children }) => (
   <Dropdown icon="ellipsis vertical" floating>
-    <Dropdown.Menu>{children}</Dropdown.Menu>
+    <Dropdown.Menu direction="left">{children}</Dropdown.Menu>
   </Dropdown>
 );
 

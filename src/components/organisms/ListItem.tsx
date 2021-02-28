@@ -39,10 +39,14 @@ const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
     </List.Content>
     <List.Icon
       name="circle"
+      verticalAlign="middle"
       color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
     />
     <List.Content>
-      {dateFormatter(tastingSheet.createdAt.toDate())}
+      <List.Header>{tastingSheet.title || 'No Title'}</List.Header>
+      <List.Description>
+        {dateFormatter(tastingSheet.createdAt.toDate())}
+      </List.Description>
     </List.Content>
   </List.Item>
 );

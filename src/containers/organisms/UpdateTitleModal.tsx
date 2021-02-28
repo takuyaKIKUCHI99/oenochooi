@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   Button,
@@ -19,7 +19,7 @@ type Props = {
 };
 
 const UpdateTitleModal: FC<Props> = ({ id, title }) => {
-  // const history = useHistory();
+  const history = useHistory();
   const [open, setOpen] = useState(false);
   const [titleInput, setTitleInput] = useState(title);
 
@@ -29,7 +29,7 @@ const UpdateTitleModal: FC<Props> = ({ id, title }) => {
 
   const handleSubmit = async () => {
     await firestoreDataManipulation('update', id, { title: titleInput });
-    // history.go(0);
+    history.go(0);
     toggleModal(false);
   };
 
