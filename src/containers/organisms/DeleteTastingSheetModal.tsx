@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
-import ConfirmationModal from 'components/organisms/ConfirmationModal';
+import ModalHolder from 'components/organisms/ModalHolder';
 
 import firestoreDataManipulation from 'utils/firestoreDataManipulation';
 
@@ -27,7 +27,7 @@ const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
   const trigger = <Dropdown.Item icon="trash" text="削除" />;
 
   return (
-    <ConfirmationModal
+    <ModalHolder
       trigger={trigger}
       open={open}
       toggleModal={(bool) => toggleModal(bool)}
@@ -47,7 +47,7 @@ const DeleteTastingSheetModal: FC<Props> = ({ id }) => {
           <Icon name="checkmark" /> Yes
         </Button>
       </Modal.Actions>
-    </ConfirmationModal>
+    </ModalHolder>
   );
 };
 

@@ -8,12 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-const ConfirmationModal: FC<Props> = ({
-  open,
-  toggleModal,
-  trigger,
-  children,
-}) => (
+const ModalHolder: FC<Props> = ({ open, toggleModal, trigger, children }) => (
   <Modal
     basic
     onClose={() => toggleModal(false)}
@@ -26,4 +21,4 @@ const ConfirmationModal: FC<Props> = ({
   </Modal>
 );
 
-export default ConfirmationModal;
+export default ModalHolder;
