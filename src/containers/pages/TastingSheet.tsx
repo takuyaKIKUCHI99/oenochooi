@@ -18,7 +18,7 @@ import {
   WHITE_CONCLUSION_DEFAULT,
 } from 'data/whiteWine';
 
-import firebase, { db } from '../../firebase';
+import firestoreDataManipulation from 'utils/firestoreDataManipulation';
 
 type LocationState = {
   selectedTastingSheet: TastingSheetDoc;
@@ -31,11 +31,13 @@ const EnhancedTastingSheet: FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [wineType, setWineType] = useState<WineType>();
+  const [id, setId] = useState<string>();
+  const [wineType, setWineType] = useState<WineType>('red');
   const [appearance, setAppearance] = useState<SubCategoryItems>();
   const [nose, setNose] = useState<SubCategoryItems>();
   const [palate, setPalate] = useState<SubCategoryItems>();
   const [conclusion, setConclusion] = useState<SubCategoryItems>();
+  const [title, setTitle] = useState<string>('');
 
   // Set TastingSheet value
   useEffect(() => {
@@ -55,11 +57,13 @@ const EnhancedTastingSheet: FC = () => {
     }
 
     if (location.state.selectedTastingSheet) {
+      setId(location.state.selectedTastingSheet.id);
       setWineType(location.state.selectedTastingSheet.wineType);
       setAppearance(location.state.selectedTastingSheet.appearance);
       setNose(location.state.selectedTastingSheet.nose);
       setPalate(location.state.selectedTastingSheet.palate);
       setConclusion(location.state.selectedTastingSheet.conclusion);
+      setTitle(location.state.selectedTastingSheet.title);
     }
   }, [location]);
 
@@ -73,30 +77,23 @@ const EnhancedTastingSheet: FC = () => {
     if (categoryTitle === '総合評価') setConclusion(attributes);
   };
 
-  const handleSubmit = () => {
-    const tastingSheet = {
+  const handleSubmit = async () => {
+    const tastingSheetArgs = {
       wineType,
       appearance: { ...appearance },
       nose: { ...nose },
       palate: { ...palate },
       conclusion: { ...conclusion },
-      createdAt: firebase.firestore.Timestamp.now(),
+      title,
     };
+    const type = id ? 'update' : 'create';
 
     setLoading(true);
 
-    db.collection('tastingSheets')
-      .add({ ...tastingSheet })
-      .then(() => {
-        setLoading(false);
-        history.push('/');
-      })
-      .catch((error) => {
-        // Todo: Replace console when Message is ready
-        // eslint-disable-next-line no-console
-        console.error('Error adding document: ', error);
-        setLoading(false);
-      });
+    await firestoreDataManipulation(type, id, tastingSheetArgs);
+
+    setLoading(false);
+    history.push('/');
   };
 
   if (!wineType || !appearance || !nose || !palate || !conclusion) return null;
