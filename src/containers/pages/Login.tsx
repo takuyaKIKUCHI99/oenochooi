@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
+import Login from 'components/pages/Login';
 
-const Login: FC = () => <p>login</p>;
+const EnhancedLogin: FC = () => <Login />;
 
-export default Login;
+export default EnhancedLogin;
