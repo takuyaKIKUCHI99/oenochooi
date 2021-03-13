@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Container } from 'semantic-ui-react';
 
+import Login from 'containers/pages/Login';
 import TastingList from 'containers/pages/TastingList';
 import TastingSheet from 'containers/pages/TastingSheet';
 
@@ -17,6 +18,9 @@ const App: FC = () => {
             </Route>
             <Route path="/tastingSheet">
               <TastingSheet />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
             <Route path="/">
               <TastingList />
