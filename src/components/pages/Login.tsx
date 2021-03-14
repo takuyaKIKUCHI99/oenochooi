@@ -1,19 +1,26 @@
 import React, { FC } from 'react';
-import { Button, Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from '../../firebase';
+
+const uiConfig = {
+  signInSuccessUrl: '/',
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
+  ],
+};
 
 const Login: FC = () => (
   <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as="h1">Login</Header>
-      <Button basic fluid style={{ marginBottom: '0.5rem' }}>
-        <Icon name="google" /> Googleアカウントでログイン
-      </Button>
-      <Button basic fluid style={{ marginBottom: '0.5rem' }}>
-        <Icon name="phone" /> 電話番号でログイン
-      </Button>
-      <Button basic fluid>
-        <Icon name="user secret" /> 匿名でログイン
-      </Button>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </Grid.Column>
   </Grid>
 );
