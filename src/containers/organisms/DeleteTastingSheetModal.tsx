@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
-import dateFormatter from 'utils/dateFormatter';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
+import dateFormatter from 'utils/functions/dateFormatter';
 
 import firebase from 'firebase';
 

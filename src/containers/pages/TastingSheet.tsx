@@ -18,7 +18,7 @@ import {
   WHITE_CONCLUSION_DEFAULT,
 } from 'data/whiteWine';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
 
 type LocationState = {
   selectedTastingSheet: TastingSheetDoc;

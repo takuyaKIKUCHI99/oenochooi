@@ -6,7 +6,7 @@ import EllipsisMenu from 'containers/molecules/EllipsisMenu';
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
 
 import firebase from 'firebase';
-import dateFormatter from 'utils/dateFormatter';
+import dateFormatter from 'utils/functions/dateFormatter';
 
 export type TastingSheetDoc = {
   appearance: SubCategoryItems;

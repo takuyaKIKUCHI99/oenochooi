@@ -1,5 +1,5 @@
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
-import firebase, { db } from '../firebase';
+import firebase, { db } from '../../firebase';
 
 type TastingSheetArgs = {
   appearance?: SubCategoryItems;

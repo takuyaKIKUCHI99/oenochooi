@@ -11,7 +11,7 @@ import {
 } from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
 
 type Props = {
   id: string;
