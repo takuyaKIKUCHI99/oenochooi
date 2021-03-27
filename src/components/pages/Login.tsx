@@ -3,17 +3,24 @@ import { Grid, Header } from 'semantic-ui-react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from '../../firebase';
 
-const uiConfig = {
-  signInSuccessUrl: '/',
+const uiConfig: firebaseui.auth.Config = {
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    // firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    // firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-    // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
+    {
+      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      customParameters: { lang: 'ja' },
+    },
   ],
+  callbacks: {
+    signInSuccessWithAuthResult: (
+      authResult: firebase.auth.UserCredential,
+      redirectUrl: string,
+    ) => {
+      console.log({ authResult });
+      console.log({ redirectUrl });
+
+      return false;
+    },
+  },
 };
 
 const Login: FC = () => (
