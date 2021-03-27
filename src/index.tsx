@@ -1,18 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './index.css';
-import 'semantic-ui-css/semantic.min.css';
+import { BrowserRouter } from 'react-router-dom';
+import firebase from 'firebase/app';
 
 import ErrorBoundary from 'containers/pages/ErrorBoundary';
 import App from './App';
+import FirebaseApp from './FirebaseApp';
+import firebaseConfig from './firebaseConfig';
 import reportWebVitals from './reportWebVitals';
+
+import 'semantic-ui-css/semantic.min.css';
+import './index.css';
+
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <BrowserRouter>
+      <ErrorBoundary>
+        <FirebaseApp>
+          <App />
+        </FirebaseApp>
+      </ErrorBoundary>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

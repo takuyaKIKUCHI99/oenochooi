@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import FirebaseContext from 'contexts';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
-import { db } from '../../firebase';
 
 const useGetTastingSheets = (): TastingSheetDoc[] | undefined => {
+  const { db } = useContext(FirebaseContext);
+
   const [tastingSheets, setTastingSheets] = useState<TastingSheetDoc[]>();
 
   useEffect(() => {
+    if (!db) throw new Error('Firestore is not initialized');
+
     db.collection('tastingSheets')
       .orderBy('createdAt', 'desc')
-      .get({ source: 'cache' })
+      .get() // { source: 'cache' }
       .then((querySnapshot) => {
         const { docs } = querySnapshot;
         if (!docs) return;
@@ -27,7 +31,7 @@ const useGetTastingSheets = (): TastingSheetDoc[] | undefined => {
         // eslint-disable-next-line no-console
         console.log('error occurred');
       });
-  }, []);
+  }, [db]);
 
   return tastingSheets;
 };

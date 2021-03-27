@@ -1,5 +1,5 @@
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
-import firebase, { db } from '../../firebase';
+import firebase from 'firebase/app';
 
 type TastingSheetArgs = {
   appearance?: SubCategoryItems;
@@ -13,6 +13,7 @@ type TastingSheetArgs = {
 type Type = 'create' | 'update' | 'delete';
 
 const firestoreDataManipulation = (
+  db: firebase.firestore.Firestore | null,
   type: Type,
   id: string | undefined,
   tastingSheetArgs: TastingSheetArgs = null,
@@ -26,12 +27,16 @@ const firestoreDataManipulation = (
   };
 
   return new Promise((resolve) => {
+    if (!db) throw new Error('Firestore is not initialized');
+
     if (type === 'create') {
       const createdAt = firebase.firestore.Timestamp.now();
 
       db.collection(collection)
         .add({ ...tastingSheetArgs, createdAt })
-        .then(() => resolve('resolved'))
+        .then(() => {
+          resolve('resolved');
+        })
         .catch((error: string) => handleError(error));
     }
 
