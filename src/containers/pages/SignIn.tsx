@@ -1,11 +1,17 @@
 import React, { FC, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
-import FirebaseContext from 'contexts';
+import { FirebaseContext, UserContext } from 'contexts';
 
 import SignIn from 'components/pages/SignIn';
 
+import paths from 'paths';
+
 const EnhancedSignIn: FC = () => {
   const { auth } = useContext(FirebaseContext);
+  const { setUserName, setCredential } = useContext(UserContext);
+  const history = useHistory();
+
   const uiConfig: firebaseui.auth.Config = {
     signInOptions: [
       {
@@ -18,8 +24,11 @@ const EnhancedSignIn: FC = () => {
         authResult: firebase.auth.UserCredential,
         redirectUrl: string,
       ) => {
-        console.log({ authResult });
-        console.log({ redirectUrl });
+        if (!authResult || !authResult.user) throw new Error('Signin failed');
+        setUserName(authResult.user.displayName);
+        setCredential(authResult);
+        const dest = redirectUrl || paths.list;
+        history.replace(dest);
 
         return false;
       },

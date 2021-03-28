@@ -8,7 +8,7 @@ import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation
 import dateFormatter from 'utils/functions/dateFormatter';
 
 import firebase from 'firebase';
-import FirebaseContext from 'contexts';
+import { FirebaseContext } from 'contexts';
 
 type Props = {
   id: string;

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import FirebaseContext from 'contexts';
+import { FirebaseContext } from 'contexts';
 import { TastingSheetDoc } from 'components/organisms/ListItem';
 
 const useGetTastingSheets = (): TastingSheetDoc[] | undefined => {

@@ -12,7 +12,7 @@ import {
 import ModalHolder from 'components/organisms/ModalHolder';
 
 import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
-import FirebaseContext from 'contexts';
+import { FirebaseContext } from 'contexts';
 
 type Props = {
   id: string;

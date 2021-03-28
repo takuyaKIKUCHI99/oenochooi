@@ -19,7 +19,7 @@ import {
 } from 'data/whiteWine';
 
 import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
-import FirebaseContext from 'contexts';
+import { FirebaseContext } from 'contexts';
 
 import paths from 'paths';
 
