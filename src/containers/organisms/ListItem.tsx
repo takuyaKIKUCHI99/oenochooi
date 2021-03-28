@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import ListItem, { TastingSheetDoc } from 'components/organisms/ListItem';
 
+import paths from 'paths';
+
 type Props = {
   id: string;
   tastingSheet: TastingSheetDoc;
@@ -16,7 +18,7 @@ const EnhancedListItem: FC<Props> = ({ tastingSheet, id }) => {
     selectedTastingSheet: TastingSheetDoc,
   ) => {
     history.push({
-      pathname: `/tastingSheet/${selectedId}`,
+      pathname: `${paths.tasting}/${selectedId}`,
       state: { selectedTastingSheet },
     });
   };

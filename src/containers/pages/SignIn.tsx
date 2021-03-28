@@ -1,10 +1,10 @@
 import React, { FC, useContext } from 'react';
-import { Grid, Header } from 'semantic-ui-react';
 import firebase from 'firebase/app';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import FirebaseContext from 'contexts';
 
-const Login: FC = () => {
+import SignIn from 'components/pages/SignIn';
+
+const EnhancedSignIn: FC = () => {
   const { auth } = useContext(FirebaseContext);
   const uiConfig: firebaseui.auth.Config = {
     signInOptions: [
@@ -26,14 +26,7 @@ const Login: FC = () => {
     },
   };
 
-  return (
-    <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h1">Login</Header>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
-      </Grid.Column>
-    </Grid>
-  );
+  return <SignIn auth={auth} uiConfig={uiConfig} />;
 };
 
-export default Login;
+export default EnhancedSignIn;

@@ -1,12 +1,8 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 
 import TastingListHeader from 'containers/organisms/TastingListHeader';
 
-type Props = {
-  children: ReactNode;
-};
-
-const TastingList: FC<Props> = ({ children }) => (
+const TastingList: FC = ({ children }) => (
   <>
     <header>
       <TastingListHeader />

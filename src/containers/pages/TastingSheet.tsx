@@ -21,6 +21,8 @@ import {
 import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
 import FirebaseContext from 'contexts';
 
+import paths from 'paths';
+
 type LocationState = {
   selectedTastingSheet: TastingSheetDoc;
   newWineType: WineType;
@@ -95,7 +97,7 @@ const EnhancedTastingSheet: FC = () => {
     await firestoreDataManipulation(db, type, id, tastingSheetArgs);
 
     setLoading(false);
-    history.push('/');
+    history.push(paths.list);
   };
 
   if (!wineType || !appearance || !nose || !palate || !conclusion) return null;

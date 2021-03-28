@@ -6,12 +6,14 @@ import TastingSheetHeader from 'components/organisms/PageHeader';
 
 import { WineType } from 'data/tastingSheet';
 
+import paths from 'paths';
+
 const EnhancedTastingListHeader: FC = () => {
   const history = useHistory();
 
   const handleClick = (wineType: WineType) => {
     history.push({
-      pathname: `/tastingSheet`,
+      pathname: paths.tasting,
       state: { newWineType: wineType },
     });
   };
