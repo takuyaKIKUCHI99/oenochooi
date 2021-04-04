@@ -9,7 +9,7 @@ import paths from 'paths';
 
 const EnhancedSignIn: FC = () => {
   const { auth } = useContext(FirebaseContext);
-  const { setUserName, setCredential } = useContext(UserContext);
+  const { setCredential } = useContext(UserContext);
   const history = useHistory();
 
   const uiConfig: firebaseui.auth.Config = {
@@ -24,8 +24,7 @@ const EnhancedSignIn: FC = () => {
         authResult: firebase.auth.UserCredential,
         redirectUrl: string,
       ) => {
-        if (!authResult || !authResult.user) throw new Error('Signin failed');
-        setUserName(authResult.user.displayName);
+        if (!authResult) throw new Error('Signin failed');
         setCredential(authResult);
         const dest = redirectUrl || paths.list;
         history.replace(dest);

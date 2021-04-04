@@ -6,7 +6,6 @@ import 'firebase/firestore';
 import { FirebaseContext, UserContext } from './contexts';
 
 const FirebaseApp: FC = ({ children }) => {
-  const [userName, setUserName] = useState<string | null>(null);
   const [
     credential,
     setCredential,
@@ -30,9 +29,7 @@ const FirebaseApp: FC = ({ children }) => {
 
   return (
     <FirebaseContext.Provider value={{ auth, db }}>
-      <UserContext.Provider
-        value={{ userName, credential, setUserName, setCredential }}
-      >
+      <UserContext.Provider value={{ credential, setCredential }}>
         {children}
       </UserContext.Provider>
     </FirebaseContext.Provider>
