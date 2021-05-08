@@ -6,17 +6,19 @@ type FirebaseContextValue = {
   db: firebase.firestore.Firestore | null;
 };
 
-export const FirebaseContext = createContext<FirebaseContextValue>({
+type UserContextValue = {
+  user: firebase.User | null;
+  setUser: (user: firebase.User | null) => void;
+};
+
+const FirebaseContext = createContext<FirebaseContextValue>({
   auth: null,
   db: null,
 });
 
-type UserContextValue = {
-  credential: firebase.auth.UserCredential | null;
-  setCredential: (credential: firebase.auth.UserCredential | null) => void;
-};
-
-export const UserContext = createContext<UserContextValue>({
-  credential: null,
-  setCredential: () => undefined,
+const UserContext = createContext<UserContextValue>({
+  user: null,
+  setUser: () => undefined,
 });
+
+export { FirebaseContext, UserContext };
