@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Dropdown } from 'semantic-ui-react';
-import TastingSheetHeader from 'components/organisms/PageHeader';
+import PageHader from 'components/organisms/PageHeader';
 
 import { WineType } from 'data/tastingSheet';
 
@@ -36,7 +36,7 @@ const EnhancedTastingListHeader: FC = () => {
   );
 
   return (
-    <TastingSheetHeader
+    <PageHader
       headerTitle="テイスティングリスト"
       actionElement={actionElement}
     />
