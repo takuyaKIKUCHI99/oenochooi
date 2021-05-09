@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -9,6 +10,16 @@ const FirebaseApp: FC = ({ children }) => {
   const [user, setUser] = useState<firebase.User | null>(null);
   const auth = firebase.auth();
   const db = firebase.firestore();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (auth) {
+      auth.onAuthStateChanged((authUser) => {
+        if (!authUser) history.push('/signIn');
+        setUser(authUser);
+      });
+    }
+  }, [auth, history, setUser]);
 
   return (
     <FirebaseContext.Provider value={{ auth, db }}>
