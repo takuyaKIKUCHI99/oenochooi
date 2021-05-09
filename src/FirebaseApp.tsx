@@ -15,11 +15,11 @@ const FirebaseApp: FC = ({ children }) => {
   useEffect(() => {
     if (auth) {
       auth.onAuthStateChanged((authUser) => {
-        if (!authUser) history.push('/signIn');
         setUser(authUser);
+        if (!authUser) history.push('/signIn');
       });
     }
-  }, [auth, history, setUser]);
+  }, [auth, history]);
 
   return (
     <FirebaseContext.Provider value={{ auth, db }}>
