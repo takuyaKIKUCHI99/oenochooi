@@ -17,6 +17,7 @@ const firestoreDataManipulation = (
   type: Type,
   id: string | undefined,
   tastingSheetArgs: TastingSheetArgs = null,
+  user: firebase.User | null = null,
 ): Promise<string> => {
   const collection = 'tastingSheets';
 
@@ -31,9 +32,14 @@ const firestoreDataManipulation = (
 
     if (type === 'create') {
       const createdAt = firebase.firestore.Timestamp.now();
+      const createdBy = {
+        id: user?.uid,
+        name: user?.displayName,
+        photo: user?.photoURL,
+      };
 
       db.collection(collection)
-        .add({ ...tastingSheetArgs, createdAt })
+        .add({ ...tastingSheetArgs, createdAt, createdBy })
         .then(() => {
           resolve('resolved');
         })

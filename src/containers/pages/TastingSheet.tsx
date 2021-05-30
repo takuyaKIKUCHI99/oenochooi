@@ -19,7 +19,7 @@ import {
 } from 'data/whiteWine';
 
 import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
-import { FirebaseContext } from 'contexts';
+import { FirebaseContext, UserContext } from 'contexts';
 
 import paths from 'paths';
 
@@ -32,6 +32,7 @@ const EnhancedTastingSheet: FC = () => {
   const history = useHistory();
   const location = useLocation<LocationState>();
   const { db } = useContext(FirebaseContext);
+  const { user } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -94,7 +95,7 @@ const EnhancedTastingSheet: FC = () => {
 
     setLoading(true);
 
-    await firestoreDataManipulation(db, type, id, tastingSheetArgs);
+    await firestoreDataManipulation(db, type, id, tastingSheetArgs, user);
 
     setLoading(false);
     history.push(paths.list);
