@@ -1,5 +1,5 @@
 # System configurations
-- Main language/Library
+- Main Language/Library
   - React
   - TypeScript
 - Linter/Formatter
@@ -17,6 +17,7 @@
 - Hosting
   - Firebase hosting
 - Authentication
+  - Firebase Authentication
   - react-firebaseui
 
 # Folder architecture
