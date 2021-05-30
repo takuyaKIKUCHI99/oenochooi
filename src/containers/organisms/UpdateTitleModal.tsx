@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import {
@@ -11,7 +11,8 @@ import {
 } from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
+import { FirebaseContext } from 'contexts';
 
 type Props = {
   id: string;
@@ -20,6 +21,7 @@ type Props = {
 
 const UpdateTitleModal: FC<Props> = ({ id, title }) => {
   const history = useHistory();
+  const { db } = useContext(FirebaseContext);
   const [open, setOpen] = useState(false);
   const [titleInput, setTitleInput] = useState(title);
 
@@ -28,7 +30,7 @@ const UpdateTitleModal: FC<Props> = ({ id, title }) => {
   };
 
   const handleSubmit = async () => {
-    await firestoreDataManipulation('update', id, { title: titleInput });
+    await firestoreDataManipulation(db, 'update', id, { title: titleInput });
     history.go(0);
     toggleModal(false);
   };

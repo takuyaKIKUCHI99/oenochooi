@@ -1,15 +1,24 @@
 # System configurations
-- React
-- TypeScript
+- Main Language/Library
+  - React
+  - TypeScript
 - Linter/Formatter
   - ESLint
   - Prettier
   - stylelint
   - Husky
   - lint-staged
-- Semantic UI React
-- React Router
-- Firestore
+- Style Library
+  - Semantic UI React
+- Routing
+  - React Router
+- Database
+  - Firestore
+- Hosting
+  - Firebase hosting
+- Authentication
+  - Firebase Authentication
+  - react-firebaseui
 
 # Folder architecture
 - atomic design

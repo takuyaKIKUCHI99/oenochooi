@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import TastingSheetHeader from 'components/organisms/PageHeader';
+import PageHeader from 'components/organisms/PageHeader';
 
 import { WineType } from 'data/tastingSheet';
 
@@ -17,12 +17,7 @@ const EnhancedTastingSheetHeader: FC<Props> = ({ wineType }) => {
       ? '赤ワイン・テイスティング用語選択用紙'
       : '白ワイン・テイスティング用語選択用紙';
 
-  return (
-    <TastingSheetHeader
-      headerTitle={headerTitle}
-      actionElement={actionElement}
-    />
-  );
+  return <PageHeader headerTitle={headerTitle} actionElement={actionElement} />;
 };
 
 export default EnhancedTastingSheetHeader;

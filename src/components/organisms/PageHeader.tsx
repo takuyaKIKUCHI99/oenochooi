@@ -6,9 +6,15 @@ type Props = {
   headerTitle: string;
 };
 
-const TastingListHeader: FC<Props> = ({ actionElement, headerTitle }) => (
+const PageHeader: FC<Props> = ({ actionElement, headerTitle }) => (
   <>
-    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+      }}
+    >
       {actionElement}
     </div>
     <Header as="h1" textAlign="center">
@@ -17,4 +23,4 @@ const TastingListHeader: FC<Props> = ({ actionElement, headerTitle }) => (
   </>
 );
 
-export default TastingListHeader;
+export default PageHeader;

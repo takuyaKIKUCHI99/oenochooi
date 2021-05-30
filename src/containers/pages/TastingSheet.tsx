@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import TastingSheet from 'components/pages/TastingSheet';
@@ -18,7 +18,10 @@ import {
   WHITE_CONCLUSION_DEFAULT,
 } from 'data/whiteWine';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
+import { FirebaseContext } from 'contexts';
+
+import paths from 'paths';
 
 type LocationState = {
   selectedTastingSheet: TastingSheetDoc;
@@ -28,6 +31,7 @@ type LocationState = {
 const EnhancedTastingSheet: FC = () => {
   const history = useHistory();
   const location = useLocation<LocationState>();
+  const { db } = useContext(FirebaseContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -90,10 +94,10 @@ const EnhancedTastingSheet: FC = () => {
 
     setLoading(true);
 
-    await firestoreDataManipulation(type, id, tastingSheetArgs);
+    await firestoreDataManipulation(db, type, id, tastingSheetArgs);
 
     setLoading(false);
-    history.push('/');
+    history.push(paths.list);
   };
 
   if (!wineType || !appearance || !nose || !palate || !conclusion) return null;

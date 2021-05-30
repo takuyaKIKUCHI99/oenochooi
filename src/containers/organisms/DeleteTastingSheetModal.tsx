@@ -1,13 +1,14 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button, Dropdown, Header, Icon, Modal } from 'semantic-ui-react';
 import ModalHolder from 'components/organisms/ModalHolder';
 
-import firestoreDataManipulation from 'utils/firestoreDataManipulation';
-import dateFormatter from 'utils/dateFormatter';
+import firestoreDataManipulation from 'utils/functions/firestoreDataManipulation';
+import dateFormatter from 'utils/functions/dateFormatter';
 
 import firebase from 'firebase';
+import { FirebaseContext } from 'contexts';
 
 type Props = {
   id: string;
@@ -17,6 +18,7 @@ type Props = {
 
 const DeleteTastingSheetModal: FC<Props> = ({ id, title, createdAt }) => {
   const history = useHistory();
+  const { db } = useContext(FirebaseContext);
   const [open, setOpen] = useState(false);
 
   const toggleModal = (bool: boolean) => {
@@ -24,7 +26,7 @@ const DeleteTastingSheetModal: FC<Props> = ({ id, title, createdAt }) => {
   };
 
   const handleDelete = async () => {
-    await firestoreDataManipulation('delete', id);
+    await firestoreDataManipulation(db, 'delete', id);
     history.go(0);
     toggleModal(false);
   };
