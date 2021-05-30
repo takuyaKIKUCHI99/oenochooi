@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { List } from 'semantic-ui-react';
+import { List, Image } from 'semantic-ui-react';
 import EllipsisMenu from 'containers/molecules/EllipsisMenu';
 
 import { SubCategoryItems, WineType } from 'data/tastingSheet';
@@ -38,6 +38,8 @@ type Props = {
 const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
   <List.Item onClick={() => handleClick(id, tastingSheet)}>
     <List.Content floated="right">
+      <Image avatar src={tastingSheet.createdBy.photo} />
+
       <EllipsisMenu
         id={id}
         title={tastingSheet.title}
@@ -54,9 +56,7 @@ const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
     <List.Content>
       <List.Header>{tastingSheet.title || 'No Title'}</List.Header>
       <List.Description>
-        {`${dateFormatter(tastingSheet.createdAt.toDate())} (${
-          tastingSheet.createdBy.name
-        })`}
+        {dateFormatter(tastingSheet.createdAt.toDate())}
       </List.Description>
     </List.Content>
   </List.Item>
