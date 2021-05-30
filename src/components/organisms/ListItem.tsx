@@ -8,10 +8,17 @@ import { SubCategoryItems, WineType } from 'data/tastingSheet';
 import firebase from 'firebase';
 import dateFormatter from 'utils/functions/dateFormatter';
 
+type CreatedBy = {
+  id: string;
+  name: string;
+  photo: string;
+};
+
 export type TastingSheetDoc = {
   appearance: SubCategoryItems;
   conclusion: SubCategoryItems;
   createdAt: firebase.firestore.Timestamp;
+  createdBy: CreatedBy;
   id: string;
   nose: SubCategoryItems;
   palate: SubCategoryItems;
@@ -37,15 +44,19 @@ const ListItem: FC<Props> = ({ id, tastingSheet, handleClick }) => (
         createdAt={tastingSheet.createdAt}
       />
     </List.Content>
+
     <List.Icon
       name="circle"
       verticalAlign="middle"
       color={tastingSheet.wineType === 'red' ? 'purple' : 'yellow'}
     />
+
     <List.Content>
       <List.Header>{tastingSheet.title || 'No Title'}</List.Header>
       <List.Description>
-        {dateFormatter(tastingSheet.createdAt.toDate())}
+        {`${dateFormatter(tastingSheet.createdAt.toDate())} (${
+          tastingSheet.createdBy.name
+        })`}
       </List.Description>
     </List.Content>
   </List.Item>
