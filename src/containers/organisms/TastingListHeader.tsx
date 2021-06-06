@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from 'contexts';
 
 import { Button, Dropdown } from 'semantic-ui-react';
-import PageHader from 'components/organisms/PageHeader';
+import PageHeader from 'components/organisms/PageHeader';
 
 import { WineType } from 'data/tastingSheet';
 
@@ -47,7 +47,7 @@ const EnhancedTastingListHeader: FC = () => {
   );
 
   return (
-    <PageHader
+    <PageHeader
       headerTitle="テイスティングリスト"
       actionElement={actionElement}
     />
